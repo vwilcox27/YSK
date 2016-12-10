@@ -1,0 +1,23 @@
+/*
+ Theme Name:     YSK Child Theme
+ Theme URI:      
+ Description:    YSK Child Theme
+ Author:         P. Vance Wilcox
+ Author URI:     
+ Template:       athena
+ Version:        1.0.0
+*/
+ 
+@import url("../athena/style.css");
+ 
+/* =Theme customization starts here
+------------------------------------------------------- */
+
+
+h3 {
+	color: #e60000;
+	font-family: 'Fredericka the Great', cursive;
+	font-size: 26;
+	font-style: 
+
+	}
