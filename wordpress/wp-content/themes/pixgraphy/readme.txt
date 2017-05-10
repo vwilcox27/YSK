@@ -1,12 +1,12 @@
 == Pixgraphy ==
-Description: Pixgraphy is a Responsive Photography WordPress Theme, Designed and Developed by Theme Freesia. This theme supports popular plugins like Breadcrumb NavXT, WP-PageNavi, Contact Form 7, Jetpack by WordPress.com, Polylang, bbPress, wooCommerce and many more. It is also translation ready and easily customizable with lots of options using Customizer. It consists contact us template, gallery template, widgets and sidebar. Get free support at http://themefreesia.com/support-forum/ and View demo site at http://demo.themefreesia.com/pixgraphy.
+Description: Pixgraphy is a Responsive Photography WordPress Theme, Designed and Developed by Theme Freesia. This theme supports popular plugins like Breadcrumb NavXT, WP-PageNavi, Contact Form 7, Jetpack by WordPress.com, Polylang, bbPress, wooCommerce and many more. It is also translation ready and easily customizable with lots of options using Customizer. It consists contact us template, gallery template, widgets and sidebar. Get free support at https://tickets.themefreesia.com/ and View demo site at http://demo.themefreesia.com/pixgraphy.
 
 Contributors: ThemeFreesia Team
 
 License: GNU General Public License version 3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Tags: threaded-comments, left-sidebar, right-sidebar, custom-background, custom-header, custom-menu, editor-style, sticky-post, theme-options, translation-ready, post-formats, custom-logo, blog, e-commerce, holiday, news, photography, portfolio
+Tags: threaded-comments, right-sidebar, four-column, custom-colors, custom-background, custom-header, custom-menu, editor-style, sticky-post, theme-options, translation-ready, post-formats, custom-logo, e-commerce, photography, portfolio
 
 All files, unless otherwise stated, are released under the GNU General Public License
 version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
@@ -66,16 +66,16 @@ All the theme files and other un-specified scripts are licensed under GNU Genera
 == Pixgraphy Info ==
 
 	- About Theme -
-	http://themefreesia.com/themes/pixgraphy
+	https://themefreesia.com/themes/pixgraphy
 
 	- Theme Demo -
 	http://demo.themefreesia.com/pixgraphy
 
 	- Theme Instruction -
-	http://themefreesia.com/theme-instruction/pixgraphy
+	https://themefreesia.com/theme-instruction/pixgraphy
 
 	- Free Support -
-	http://themefreesia.com/forums
+	https://tickets.themefreesia.com/
 
 =================================================================================
 == Menus ==
@@ -106,4 +106,4 @@ Please refer to changelog.txt file
 
 = Theme Instructions =
 
-For detail instructions visit http://themefreesia.com/theme-instruction/pixgraphy/
+For detail instructions visit https://themefreesia.com/theme-instruction/pixgraphy/

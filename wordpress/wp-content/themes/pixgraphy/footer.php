@@ -8,9 +8,20 @@
  */
 $pixgraphy_settings = pixgraphy_get_theme_options();
 if($pixgraphy_settings['pixgraphy_photography_layout'] == 'photography_layout' && !is_page() && !is_single()){
-	if(class_exists('WooCommerce') && is_shop() || is_404()  || is_search() || is_archive()): ?>
+	if( is_404()  || is_search() || is_archive()):
+		if($pixgraphy_settings['pixgraphy_photography_layout'] == 'photography_layout'){
+			if(class_exists('WooCommerce') && (is_shop() || is_product_category())){ ?>
+			</div> <!-- end .container -->
+			<?php }else{
+				if(is_404()){ ?>
+				</div> <!-- end .container -->
+				<?php }
+				// silence is golden
+			}
+		}else{?>
 		</div> <!-- end .container -->
-	<?php else: ?>
+		<?php }
+	else: ?>
 	</div> <!-- end #main -->
 	<?php
 	endif;

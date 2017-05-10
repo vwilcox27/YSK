@@ -85,4 +85,4 @@ if( 'default' == $layout ) { //Settings from customizer
 			echo '</div><!-- #secondary -->';
 		} 
 	}
-get_footer(); ?>
+get_footer();

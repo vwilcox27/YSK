@@ -138,7 +138,6 @@ body.admin-bar{
     font-size: 28px;
     line-height: 50px;
     margin: 0;
-    text-align: center;
 }
 
 #athena-header.sticky .site-description{
@@ -959,7 +958,6 @@ input[type="submit"]{
         font-size: 28px;
         line-height: 50px;
         margin: 0;
-        align-content: center;
     }
     
     .site-description{

@@ -28,7 +28,7 @@ get_header();
 					<?php
 					$pixgraphy_stickies = get_option('sticky_posts');
 					if( $pixgraphy_stickies ) {
-						$pixgraphy_args = array( 'ignore_sticky_posts' => 1, 'post__not_in' => $pixgraphy_stickies );
+						$pixgraphy_args = array( 'ignore_sticky_posts' => 1, 'post__not_in' => $pixgraphy_stickies, 'category__in' => $pixgraphy_settings['pixgraphy_categories'] );
 						query_posts( array_merge($wp_query->query, $pixgraphy_args) );
 					}
 					if( have_posts() ) {
@@ -55,7 +55,7 @@ get_sidebar();
 	<?php
 	$pixgraphy_stickies = get_option('sticky_posts');
 	if( $pixgraphy_stickies ) {
-		$pixgraphy_args = array( 'ignore_sticky_posts' => 1, 'post__not_in' => $pixgraphy_stickies );
+		$pixgraphy_args = array( 'ignore_sticky_posts' => 1, 'post__not_in' => $pixgraphy_stickies, 'category__in' => $pixgraphy_settings['pixgraphy_categories'] );
 		query_posts( array_merge($wp_query->query, $pixgraphy_args) );
 	}
 	if( have_posts() ) {
@@ -68,4 +68,4 @@ get_sidebar();
 <?php get_template_part( 'pagination', 'none' ); ?>
 <!-- end #post_masonry -->
 <?php }
-get_footer(); ?>
+get_footer();

@@ -65,4 +65,4 @@ get_sidebar();
 <?php get_template_part( 'pagination', 'none' ); ?>
 <!-- end #post_masonry -->
 <?php }
-get_footer(); ?>
+get_footer();

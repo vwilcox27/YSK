@@ -25,4 +25,4 @@ if ( !class_exists( 'Jetpack') || class_exists( 'Jetpack') && !Jetpack::is_modul
 		<?php  endif;
 	endif;
 	echo '</div> <!-- end .container -->';
-}?>
+}

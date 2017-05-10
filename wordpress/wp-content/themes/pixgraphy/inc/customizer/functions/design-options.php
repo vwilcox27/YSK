@@ -111,4 +111,3 @@ $pixgraphy_settings = pixgraphy_get_theme_options();
 		'small-boxed-layout' => __('Small Boxed Layout','pixgraphy'),
 	),
 ));
-?>

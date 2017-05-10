@@ -128,40 +128,7 @@ c.addClass("stopped");if(a(".camera_showcommands").length){var d=a(".camera_thum
     (c) 2013 Yang Zhao - geniuscarrier.com
     license: http://www.opensource.org/licenses/mit-license.php
 */
-(function($) {
-    $.fn.scrollToTop = function(options) {
-        var config = {
-            "speed" : 800
-        };
-
-        if (options) {
-            $.extend(config, {
-                "speed" : options
-            });
-        }
-
-        return this.each(function() {
-
-            var $this = $(this);
-
-            $(window).scroll(function() {
-                if ($(this).scrollTop() > 100) {
-                    $this.fadeIn();
-                } else {
-                    $this.fadeOut();
-                }
-            });
-
-            $this.click(function(e) {
-                e.preventDefault();
-                $("body, html").animate({
-                    scrollTop : 0
-                }, config.speed);
-            });
-
-        });
-    };
-})(jQuery);
+!function(e){e.fn.scrollToTop=function(n){var o={speed:800};return n&&e.extend(o,{speed:n}),this.each(function(){var n=e(this);e(window).scroll(function(){e(this).scrollTop()>100?n.fadeIn():n.fadeOut()}),n.click(function(n){n.preventDefault(),e("body, html").animate({scrollTop:0},o.speed)})})}}(jQuery);
 
 
 /* jquery.nicescroll 3.2.0 InuYaksa*2013 MIT http://areaaperta.com/nicescroll */(function(e){var y=!1,D=!1,J=5E3,K=2E3,x=0,L=function(){var e=document.getElementsByTagName("script"),e=e[e.length-1].src.split("?")[0];return 0<e.split("/").length?e.split("/").slice(0,-1).join("/")+"/":""}();Array.prototype.forEach||(Array.prototype.forEach=function(e,c){for(var h=0,l=this.length;h<l;++h)e.call(c,this[h],h,this)});var v=window.requestAnimationFrame||!1,w=window.cancelAnimationFrame||!1;["ms","moz","webkit","o"].forEach(function(e){v||(v=window[e+"RequestAnimationFrame"]);w||(w=

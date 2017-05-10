@@ -85,7 +85,17 @@ if ( ! function_exists( 'customizer_library_register' ) ) : /**
 						);
 
 						break;
+					
+					case 'upsell':
 
+	                    $wp_customize->add_control(
+	                        new Customizer_Library_Upsell(
+	                            $wp_customize, $option['id'], $option
+	                        )
+	                    );
+
+	                	break;
+					
 					case 'color':
 
 						$wp_customize->add_control(

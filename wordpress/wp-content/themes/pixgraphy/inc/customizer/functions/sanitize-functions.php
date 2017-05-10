@@ -42,9 +42,10 @@ function pixgraphy_sanitize_custom_css( $input ) {
 function pixgraphy_reset_alls( $input ) {
 	if ( $input == 1 ) {
 		delete_option( 'pixgraphy_theme_options');
+		$input=0;
+		return $input;
 	} 
 	else {
 		return '';
 	}
 }
-?>

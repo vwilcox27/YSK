@@ -111,4 +111,3 @@ $wp_customize->add_control( 'pixgraphy_theme_options[pixgraphy_social_googleplus
 	'type' => 'text',
 	)
 );
-	?>

@@ -2,6 +2,45 @@ Agama WordPress Theme, Copyright 2015 Theme-Vision.com
 Agama is distributed under the terms of the GNU GPL2
 
 ####################### Changelog ######################
+= 1.2.8.10 January 30 2017 =
+* Fixed blog posts animated minor bugs.
+
+= 1.2.8 January 27 2017 =
+* Fixed blog small thumbs layout, big space between posts on mobile devices.
+* Added frontpage boxes loading animation feature.
+* Added blog posts loading animation feature.
+
+= 1.2.7 Januar 26 2017 =
+* Removed Agama favicon feature & enabled default WordPress favicon feature.
+* Updated customizer header section.
+* Updated customizer styling header section.
+* Updated customizer primary color option (transport = postMessage).
+* Updated customizer header background color option (transport = postMessage).
+* Updated customizer header shrinked background color option (transport = postMessage).
+* Updated customizer header borders color option (transport = postMessage).
+* Updated customizer logo color option (transport = postMessage).
+* Updated customizer logo hover color option (transport = postMessage).
+* Updated customizer navigation color option (transport = postMessage).
+* Updated customizer navigation hover color option (transport = postMessage).
+* Updated footer widget area background color option (transport = postMessage).
+* Updated footer copyright area background color option (transport = postMessage).
+* Updated theme translation files.
+
+= 1.2.6 Januar 12 2017 =
+* Added blog post meta date (on | off) feature.
+* Added blog post meta category (on | off) feature.
+* Added blog post meta comments counter (on | off) feature.
+* Updated theme translation files.
+* Updated customizer blog sections.
+* Updated small thumbs blog layout post meta.
+* Fixed Header V1 header shrinked background color bug.
+* Fixed minor post meta bugs.
+* Fixed (jQuery [undefined?32123123] 404 not found) bug.
+
+= 1.2.5 Januar 07 2017 =
+* Updated kirki framework to latest stable version.
+* Updated FontAwesome to latest stable version.
+
 = 1.2.4 November 22 2016 =
 * Fixed dashed lines issue when comments are disabled.
 * Minor styling fixes.
@@ -172,10 +211,11 @@ Agama is distributed under the terms of the GNU GPL2
  * Animate - http://daneden.github.io/animate.css/ - MIT License
  * Easing - http://gsgd.co.uk/sandbox/jquery/easing/ - BSD License
  * Camera - http://www.pixedelic.com/plugins/camera/ - MIT License
+ * AnimOnScroll http://www.codrops.com - MIT Lcense
  
  Images used in Screenshot are licensed under Creative Commons Zero License:
 
- * CAIO - https://www.pexels.com/u/caio/ - https://www.pexels.com/photo/books-notebook-macbook-table-56759/ - CC0 1.0 License
+ * Philipp Henzler - https://unsplash.com/@philipphenzler - https://unsplash.com/photos/dgE3lWVyDh8 - CC0 1.0 License
  
  Unless otherwise specified, all the theme files, scripts and images
  are licensed under GNU General Public License version 2, see file license.txt.

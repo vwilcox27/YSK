@@ -1,28 +1,42 @@
 <?php
 /**
- * spacing Customizer Control.
+ * Customizer Control: spacing.
  *
  * @package     Kirki
  * @subpackage  Controls
  * @copyright   Copyright (c) 2016, Aristeides Stathopoulos
- * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       1.1
+ * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
+ * @since       2.1
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
+
+	/**
+	 * Spacing control.
+	 * multiple checkboxes with CSS units validation.
+	 */
 	class Kirki_Controls_Spacing_Control extends Kirki_Customize_Control {
 
-		public $type = 'spacing';
+		/**
+		 * The control type.
+		 *
+		 * @access public
+		 * @var string
+		 */
+		public $type = 'kirki-spacing';
 
+		/**
+		 * Refresh the parameters passed to the JavaScript via JSON.
+		 *
+		 * @access public
+		 */
 		public function to_json() {
 			parent::to_json();
-			$this->json['l10n']    = Kirki_Toolkit::i18n();
-			$this->json['choices'] = array();
 			if ( is_array( $this->choices ) ) {
 				foreach ( $this->choices as $choice => $value ) {
 					if ( true === $value ) {
@@ -40,7 +54,27 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 			}
 		}
 
-		protected function content_template() { ?>
+		/**
+		 * Enqueue control related scripts/styles.
+		 *
+		 * @access public
+		 */
+		public function enqueue() {
+			wp_enqueue_script( 'kirki-spacing' );
+		}
+
+		/**
+		 * An Underscore (JS) template for this control's content (but not its container).
+		 *
+		 * Class variables for this control class are available in the `data` JS object;
+		 * export custom variables by overriding {@see Kirki_Customize_Control::to_json()}.
+		 *
+		 * @see WP_Customize_Control::print_template()
+		 *
+		 * @access protected
+		 */
+		protected function content_template() {
+			?>
 			<# if ( data.tooltip ) { #>
 				<a href="#" class="tooltip hint--left" data-hint="{{ data.tooltip }}"><span class='dashicons dashicons-info'></span></a>
 			<# } #>
@@ -53,27 +87,11 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 				<# } #>
 				<div class="wrapper">
 					<div class="control">
-						<# for ( choiceKey in data.choices ) { #>
+						<# for ( choiceKey in data.default ) { #>
 							<div class="{{ choiceKey }}">
 								<h5>{{ data.l10n[ choiceKey ] }}</h5>
-								<div class="inner">
-									<input type="number" min="0" step="any" value="{{ parseFloat( data.value[ choiceKey ] ) }}"/>
-									<select>
-									<# if ( data.choices['units'] ) { #>
-										<# for ( key in data.choices['units'] ) { #>
-											<option value="{{ data.choices['units'][ key ] }}" <# if ( _.contains( data.value[ choiceKey ], data.choices['units'][ key ] ) ) { #> selected <# } #>>{{ data.choices['units'][ key ] }}</option>
-										<# } #>
-									<# } else { #>
-										<# if ( data.value && data.value[ choiceKey ] ) { #>
-											<# var units = data.value[ choiceKey ].replace( parseFloat( data.value[ choiceKey ] ), '' ); #>
-										<# } else { #>
-											<# var units = 'px'; #>
-										<# } #>
-										<option value="px" <# if ( units == 'px' ) { #> selected <# } #>>px</option>
-										<option value="em" <# if ( units == 'em' ) { #> selected <# } #>>em</option>
-										<option value="%" <# if ( units == '%' ) { #> selected <# } #>>%</option>
-									<# } #>
-									</select>
+								<div class="{{ choiceKey }} input-wrapper">
+									<input {{{ data.inputAttrs }}} type="text" value="{{ data.value[ choiceKey ] }}"/>
 								</div>
 							</div>
 						<# } #>
@@ -82,6 +100,5 @@ if ( ! class_exists( 'Kirki_Controls_Spacing_Control' ) ) {
 			</label>
 			<?php
 		}
-
 	}
 }

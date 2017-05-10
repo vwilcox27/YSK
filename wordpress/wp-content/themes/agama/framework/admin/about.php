@@ -74,9 +74,7 @@ if( ! class_exists( 'Agama_About' ) ) {
 				
 				echo '<div class="changelog point-releases">';
 					echo sprintf( '<h3>Changelog Agama v%s</h3>', Agama_Core::version() );
-						echo '<p>* Fixed dashed lines issue when comments are disabled.</p>';
-						echo '<p>* Minor styling fixes.</p>';
-						echo '<p>* Minor coding fixes.</p>';
+						echo '<p>* Fixed blog posts animated minor bugs.</p>';
 				echo '</div>';
 				
 			echo '</div>';

@@ -9,9 +9,9 @@
 ?>
 		<div class="clearboth"></div>
 	</div><!-- #content -->
-	    
-	<?php get_template_part( '/templates/footers/footer-social' ); ?>
-	
+
+<!--	--><?php //get_template_part( '/templates/footers/footer-social' ); ?>
+
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

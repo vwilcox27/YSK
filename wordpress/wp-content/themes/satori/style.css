@@ -4,7 +4,7 @@ Theme URI: https://kairaweb.com/theme/satori/
 Author: Kaira
 Author URI: https://kairaweb.com/
 Description: Our Satori multipurpose WordPress theme is designed for the creative wanting to build anything from a client restaurant website to a creative portfolio site for a photograher and anything in between. Satori integrates nicely with some of the top WordPress plugins such as WooCommerce to create an online store and let users easily shop through your products, SitOrigin's Page Builder and Widgets Bungle to allow you to easily build any type of page layout you want using a neat drag and drop interface, and more. Download Satori now... Hope you like it!
-Version: 1.0.8
+Version: 1.1.00
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: satori
@@ -443,8 +443,6 @@ h2 {
 h3 {
     font-size: 22px;
     margin-bottom: .8em;
-    font-family: 'Fredericka the Great', cursive;
-
 }
 
 h4 {
@@ -631,9 +629,10 @@ a:active {
 	display: block;
 }
 
-.main-navigation .current_page_item > a,
-.main-navigation .current-menu-item > a,
-.main-navigation .current_page_ancestor > a {
+.main-navigation ul ul .current_page_item > a,
+.main-navigation ul ul .current-menu-item > a,
+.main-navigation ul ul .current_page_ancestor > a {
+	color: #FFF;
 }
 
 /* Small menu. */
@@ -963,7 +962,6 @@ padding: 48px 0 40px 2%;}
 
 .breadcrumbs {
     position: absolute;
-	
     top: 15px;
     right: 0;
     font-size: 11px;
@@ -1832,6 +1830,17 @@ object {
 	.page-banner-inner h3.entry-title {
     	font-size: 38px;
  	}
+ 	
+ 	.entry-header .entry-title {
+		text-align: center;
+		margin: 0 0 14px;
+	}
+	.breadcrumbs {
+		position: relative;
+	    top: 0;
+	    padding: 0 0 10px;
+	    text-align: center;
+	}
 	
 }
 

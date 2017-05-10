@@ -35,4 +35,4 @@ global $pixgraphy_content_layout;
 </div> <!-- #primary -->
 <?php endif;
 get_sidebar();
-get_footer(); ?>
+get_footer();

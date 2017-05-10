@@ -1,3 +1,5 @@
+<?php if( ! defined( 'ABSPATH' ) ) exit; ?>
+
 <header class="entry-header">
 
 	<?php if( get_theme_mod( 'agama_blog_single_post_thumbnail', true ) ): ?>

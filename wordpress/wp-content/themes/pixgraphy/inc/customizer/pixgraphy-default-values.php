@@ -50,8 +50,8 @@ if(!function_exists('pixgraphy_get_option_defaults_values')):
 			'pixgraphy_social_instagram'=> '',
 			'pixgraphy_social_flickr'=> '',
 			'pixgraphy_social_googleplus'=> '',
+			'pixgraphy_remove_parallax_fromheader'=>0,
 			);
 		return apply_filters( 'pixgraphy_get_option_defaults_values', $pixgraphy_default_values );
 	}
 endif;
-?>

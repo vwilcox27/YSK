@@ -4,7 +4,7 @@
  *
  * @package Satori
  */
-define( 'SATORI_THEME_VERSION' , '1.0.8' );
+define( 'SATORI_THEME_VERSION' , '1.1.00' );
 
 // Upgrade / Go Premium page
 require get_template_directory() . '/upgrade/upgrade.php';
@@ -95,11 +95,13 @@ function satori_setup() {
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters( 'satori_custom_background_args', array(
-		'default-color' => 'F9F9F9',
-		'default-image' => '',
+		'default-color' => 'FFFFFF'
 	) ) );
 	
 	add_theme_support( 'woocommerce' );
+	add_theme_support( 'wc-product-gallery-zoom' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
+	add_theme_support( 'wc-product-gallery-slider' );
 }
 endif; // satori_setup
 add_action( 'after_setup_theme', 'satori_setup' );
@@ -113,7 +115,6 @@ function satori_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'satori' ),
 		'id'            => 'sidebar-1',
-		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h3 class="widget-title">',
@@ -147,7 +148,7 @@ function satori_scripts() {
 	wp_enqueue_style( 'satori-body-font-default', '//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic', array(), SATORI_THEME_VERSION );
 	wp_enqueue_style( 'satori-heading-font-default', '//fonts.googleapis.com/css?family=Kaushan+Script', array(), SATORI_THEME_VERSION );
 	
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/includes/font-awesome/css/font-awesome.css', array(), '4.6.3' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/includes/font-awesome/css/font-awesome.css', array(), '4.7.0' );
 	wp_enqueue_style( 'satori-style', get_stylesheet_uri(), array(), SATORI_THEME_VERSION );
 	
 	if ( get_theme_mod( 'satori-header-layout' ) == 'satori-header-layout-two' ) :
@@ -191,6 +192,14 @@ function satori_add_editor_styles() {
     add_editor_style();
 }
 add_action( 'admin_init', 'satori_add_editor_styles' );
+
+/**
+ * Enqueue admin styling.
+ */
+function satori_load_admin_script() {
+    wp_enqueue_style( 'satori-admin-css', get_template_directory_uri() . '/upgrade/css/admin-css.css' );
+}
+add_action( 'admin_enqueue_scripts', 'satori_load_admin_script' );
 
 /**
  * Enqueue satori custom customizer styling.
@@ -279,10 +288,44 @@ function satori_register_required_plugins() {
 	);
 	$config = array(
 		'id'           => 'satori',
-		'menu'         => 'tgmpa-install-plugins',
-		'message'      => '',
+		'menu'         => 'tgmpa-install-plugins'
 	);
 
 	tgmpa( $plugins, $config );
 }
 add_action( 'tgmpa_register', 'satori_register_required_plugins' );
+
+/**
+ * Register a custom Post Categories ID column
+ */
+function satori_edit_cat_columns( $satori_cat_columns ) {
+    $satori_cat_in = array( 'cat_id' => 'Category ID <span class="cat_id_note">For the Default Slider</span>' );
+    $satori_cat_columns = satori_cat_columns_array_push_after( $satori_cat_columns, $satori_cat_in, 0 );
+    return $satori_cat_columns;
+}
+add_filter( 'manage_edit-category_columns', 'satori_edit_cat_columns' );
+
+/**
+ * Print the ID column
+ */
+function satori_cat_custom_columns( $value, $name, $cat_id ) {
+    if( 'cat_id' == $name ) 
+        echo $cat_id;
+}
+add_filter( 'manage_category_custom_column', 'satori_cat_custom_columns', 10, 3 );
+
+/**
+ * Insert an element at the beggining of the array
+ */
+function satori_cat_columns_array_push_after( $src, $satori_cat_in, $pos ) {
+    if ( is_int( $pos ) ) {
+        $R = array_merge( array_slice( $src, 0, $pos + 1 ), $satori_cat_in, array_slice( $src, $pos + 1 ) );
+    } else {
+        foreach ( $src as $k => $v ) {
+            $R[$k] = $v;
+            if ( $k == $pos )
+                $R = array_merge( $R, $satori_cat_in );
+        }
+    }
+    return $R;
+}

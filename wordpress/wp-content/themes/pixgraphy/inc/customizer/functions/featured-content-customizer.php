@@ -29,5 +29,4 @@ $wp_customize->add_control( 'pixgraphy_theme_options[pixgraphy_enable_slider]', 
 	'enitresite' => __('Entire Site','pixgraphy'),
 	'disable' => __('Disable Slider','pixgraphy'),
 ),
-));    
-?>
+));

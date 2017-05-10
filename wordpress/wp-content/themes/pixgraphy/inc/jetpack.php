@@ -19,4 +19,3 @@ function pixgraphy_jetpack_setup() {
 	) );
 }
 add_action( 'after_setup_theme', 'pixgraphy_jetpack_setup' );
-?>

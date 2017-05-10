@@ -33,6 +33,9 @@ if ( ! class_exists( 'Customizer_Library' ) ) : // Helper functions to output th
 // Customizer preview functions.
 	require plugin_dir_path( __FILE__ ) . 'extensions/preview.php';
 
+// Custom upsell controls for the theme customizer.
+	require plugin_dir_path( __FILE__ ) . 'custom-controls/upsell.php';
+
 // Custom controls for the theme customizer.
 	if ( version_compare( $GLOBALS['wp_version'], '4.0', '<' ) ) {
 		require plugin_dir_path( __FILE__ ) . 'custom-controls/textarea.php';

@@ -42,7 +42,7 @@ get_header('shop');
         <div class="ak-container">
             <div id="primary" class="content-area">
                 <div class="content-inner clearfix">
-                    <div class="col-sm-<?php echo (!is_active_sidebar('sidebar-right') ) ? '12' : '9'; ?>">
+                    <div class="col-sm-<?php echo (!is_active_sidebar('sidebar-shop') ) ? '12' : '9'; ?>">
                         <?php while (have_posts()) : the_post(); ?>
 
                             <?php wc_get_template_part('content', 'single-product'); ?>

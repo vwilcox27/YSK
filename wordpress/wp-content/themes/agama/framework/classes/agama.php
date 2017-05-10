@@ -151,6 +151,20 @@ if( ! class_exists( 'Agama' ) ) {
 		}
 		
 		/**
+		 * Blog Posts Loading Animation
+		 *
+		 * @since 1.2.8
+		 */
+		static function posts_AnimateOnScroll() {
+			$posts['animated']  = esc_attr( get_theme_mod( 'agama_blog_posts_load_animated', true ) );
+			$posts['animation'] = esc_attr( get_theme_mod( 'agama_blog_posts_load_animation', 'bounceInUp' ) );
+			
+			if( $posts['animated'] && ! is_single() ) {
+				echo ' data-animonscroll="'. $posts['animation'] .'" data-delay="1000"';
+			}
+		}
+		
+		/**
 		 * Excerpt Lenght
 		 *
 		 * @since 1.0.0

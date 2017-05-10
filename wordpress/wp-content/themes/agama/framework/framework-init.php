@@ -14,5 +14,4 @@ get_template_part('framework/slider');
 get_template_part('framework/breadcrumbs');
 get_template_part('framework/frontpage-boxes');
 get_template_part('framework/widgets/widgets');
-get_template_part('framework/admin/customizer');
-get_template_part('framework/admin/about');
+get_template_part('framework/admin/admin-init'); 

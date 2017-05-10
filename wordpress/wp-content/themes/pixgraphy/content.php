@@ -126,4 +126,4 @@ if($pixgraphy_settings['pixgraphy_photography_layout'] != 'photography_layout'){
 		<!-- end .post-column -->
 	</article>
 	<!-- end .post-container -->
-<?php	} ?>
+<?php	}

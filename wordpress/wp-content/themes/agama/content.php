@@ -11,7 +11,7 @@
  $blog_layout = get_theme_mod('agama_blog_layout', 'list');
  ?>
 
-<div class="article-wrapper <?php agama_article_wrapper_class(); ?> clearfix">
+<div class="article-wrapper <?php agama_article_wrapper_class(); ?> clearfix"<?php Agama::posts_AnimateOnScroll(); ?>>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
 	/**

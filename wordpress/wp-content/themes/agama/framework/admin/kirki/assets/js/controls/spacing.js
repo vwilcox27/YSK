@@ -1,102 +1,65 @@
-/**
- * KIRKI CONTROL: SPACING
- */
-wp.customize.controlConstructor['spacing'] = wp.customize.Control.extend( {
+wp.customize.controlConstructor['kirki-spacing'] = wp.customize.Control.extend({
+
 	ready: function() {
+
+		'use strict';
+
+		var control     = this,
+		    subControls = control.params.choices.controls,
+		    value       = {},
+		    subsArray   = [],
+		    i;
+
+		_.each( subControls, function( v, i ) {
+			if ( true === v ) {
+				subsArray.push( i );
+			}
+		} );
+
+		for ( i = 0; i < subsArray.length; i++ ) {
+
+			value[ subsArray[ i ] ] = control.setting._value[ subsArray[ i ] ];
+
+			control.updateSpacingValue( subsArray[ i ], value );
+
+		}
+
+	},
+
+	/**
+	 * Updates the value.
+	 */
+	updateSpacingValue: function( context, value ) {
+
 		var control = this;
-		var compiled_value = {};
 
-		// get initial values and pre-populate the object
-		if ( control.container.has( '.top' ).size() ) {
-			compiled_value['top'] = control.setting._value['top'];
-		}
-		if ( control.container.has( '.bottom' ).size() ) {
-			compiled_value['bottom'] = control.setting._value['bottom'];
-		}
-		if ( control.container.has( '.left' ).size() ) {
-			compiled_value['left']  = control.setting._value['left'];
-		}
-		if ( control.container.has( '.right' ).size() ) {
-			compiled_value['right']    = control.setting._value['right'];
-		}
+		control.container.on( 'change keyup paste', '.' + context + ' input', function() {
+			value[ context ] = jQuery( this ).val();
 
-		// use selectize
-		jQuery( '.customize-control-spacing select' ).selectize();
+			// Notifications.
+			kirkiNotifications( control.id, 'kirki-spacing', control.params.kirkiConfig );
 
-		// top
-		if ( control.container.has( '.top' ).size() ) {
-			var top_numeric_value = control.container.find('.top input[type=number]' ).val();
-			var top_units_value   = control.container.find('.top select' ).val();
+			// Save the value
+			control.saveValue( value );
+		});
 
-			this.container.on( 'change', '.top input', function() {
-				top_numeric_value = jQuery( this ).val();
-				compiled_value['top'] = top_numeric_value + top_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-			this.container.on( 'change', '.top select', function() {
-				top_units_value = jQuery( this ).val();
-				compiled_value['top'] = top_numeric_value + top_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+	},
 
-		// bottom
-		if ( control.container.has( '.bottom' ).size() ) {
-			var bottom_numeric_value = control.container.find('.bottom input[type=number]' ).val();
-			var bottom_units_value   = control.container.find('.bottom select' ).val();
+	/**
+	 * Saves the value.
+	 */
+	saveValue: function( value ) {
 
-			this.container.on( 'change', '.bottom input', function() {
-				bottom_numeric_value = jQuery( this ).val();
-				compiled_value['bottom'] = bottom_numeric_value + bottom_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-			this.container.on( 'change', '.bottom select', function() {
-				bottom_units_value = jQuery( this ).val();
-				compiled_value['bottom'] = bottom_numeric_value + bottom_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+		'use strict';
 
-		// left
-		if ( control.container.has( '.left' ).size() ) {
-			var left_numeric_value = control.container.find('.left input[type=number]' ).val();
-			var left_units_value   = control.container.find('.left select' ).val();
+		var control  = this,
+		    newValue = {};
 
-			this.container.on( 'change', '.left input', function() {
-				left_numeric_value = jQuery( this ).val();
-				compiled_value['left'] = left_numeric_value + left_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-			this.container.on( 'change', '.left select', function() {
-				left_units_value = jQuery( this ).val();
-				compiled_value['left'] = left_numeric_value + left_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+		_.each( value, function( newSubValue, i ) {
+			newValue[ i ] = newSubValue;
+		});
 
-		// right
-		if ( control.container.has( '.right' ).size() ) {
-			var right_numeric_value = control.container.find('.right input[type=number]' ).val();
-			var right_units_value   = control.container.find('.right select' ).val();
-
-			this.container.on( 'change', '.right input', function() {
-				right_numeric_value = jQuery( this ).val();
-				compiled_value['right'] = right_numeric_value + right_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-			this.container.on( 'change', '.right select', function() {
-				right_units_value = jQuery( this ).val();
-				compiled_value['right'] = right_numeric_value + right_units_value;
-				control.setting.set( compiled_value );
-				wp.customize.previewer.refresh();
-			});
-		}
+		control.setting.set( newValue );
 	}
+
 });

@@ -13,7 +13,12 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'fortunato' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+				<h1 class="page-title">
+				<?php
+				/* translators: %s: search query */
+				printf( esc_html__( 'Search Results for: %s', 'fortunato' ), '<span>' . get_search_query() . '</span>' );
+				?>
+				</h1>
 			</header><!-- .page-header -->
 
 			<?php /* Start the Loop */ ?>
@@ -30,15 +35,13 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) {
-				the_posts_navigation();
-			} else {
+			<?php
 				the_posts_pagination( array(
 					'prev_text'          => __( '<i class="fa fa-angle-double-left spaceRight"></i>Previous', 'fortunato' ),
 					'next_text'          => __( 'Next<i class="fa fa-angle-double-right spaceLeft"></i>', 'fortunato' ),
 					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'fortunato' ) . ' </span>',
 				) );
-			} ?>
+			?>
 
 		<?php else : ?>
 

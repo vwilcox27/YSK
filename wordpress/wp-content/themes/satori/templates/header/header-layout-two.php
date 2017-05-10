@@ -30,7 +30,7 @@ global $woocommerce; ?>
 				
 				<?php get_template_part( '/templates/social-links' ); ?>
 			
-				<?php if ( !get_theme_mod( 'satori-header-search', false ) ) : ?>
+				<?php if ( !get_theme_mod( 'satori-header-search' ) ) : ?>
 					<div class="menu-search">
 				    	<i class="fa fa-search search-btn"></i>
 				    </div>
@@ -66,7 +66,7 @@ global $woocommerce; ?>
 		</div>
 		<div class="clearboth"></div>
 		
-		<?php if ( !get_theme_mod( 'satori-header-search', false ) ) : ?>
+		<?php if ( !get_theme_mod( 'satori-header-search' ) ) : ?>
 		    <div class="search-block">
 		        <?php get_search_form(); ?>
 		    </div>

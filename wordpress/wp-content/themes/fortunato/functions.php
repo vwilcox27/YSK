@@ -34,6 +34,8 @@ function fortunato_setup() {
 	 * provide it for us.
 	 */
 	add_theme_support( 'title-tag' );
+	
+	add_theme_support( 'customize-selective-refresh-widgets' );
 
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
@@ -45,7 +47,7 @@ function fortunato_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'fortunato' ),
+		'primary' => esc_html__( 'Primary Menu', 'fortunato' ),
 	) );
 
 	/*
@@ -87,7 +89,7 @@ add_action( 'after_setup_theme', 'fortunato_content_width', 0 );
  */
 function fortunato_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'fortunato' ),
+		'name'          => esc_html__( 'Sidebar', 'fortunato' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -134,6 +136,7 @@ add_action( 'wp_enqueue_scripts', 'fortunato_scripts' );
 if ( ! function_exists( 'fortunato_woocommerce_support' ) ) :
 	function fortunato_woocommerce_support() {
 		add_theme_support( 'woocommerce' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
 	}
 	add_action( 'after_setup_theme', 'fortunato_woocommerce_support' );
 endif; // fortunato_woocommerce_support
@@ -172,3 +175,8 @@ require get_template_directory() . '/inc/fortunato-dynamic.php';
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/admin/fortunato-admin-page.php';
 }
+
+/**
+ * Load PRO Button in the customizer
+ */
+require_once( trailingslashit( get_template_directory() ) . 'inc/pro-button/class-customize.php' );

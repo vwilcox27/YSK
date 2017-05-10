@@ -54,4 +54,3 @@ function pixgraphy_widgets_init() {
 			'after_title' => '</h2>',
 		));
 }
-?>

@@ -1,8 +1,6 @@
 (function($) {
 	"use strict";
-	
 	$(document).ready(function() {
-		
 		/*-----------------------------------------------------------------------------------*/
 		/*  Set height of header
 		/*-----------------------------------------------------------------------------------*/ 
@@ -11,7 +9,10 @@
 				$('.site-header, .site-brand-main').css('height', windowHeight);
 			};
 			setHeight();
-		
+		/*-----------------------------------------------------------------------------------*/
+		/*  Detect touch screen device
+		/*-----------------------------------------------------------------------------------*/ 
+			var mobileDetect = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 		/*-----------------------------------------------------------------------------------*/
 		/*  Home icon in main menu
 		/*-----------------------------------------------------------------------------------*/ 
@@ -20,7 +21,6 @@
 			} else {
 				$('.main-navigation .menu-item-home:first-child > a').prepend('<i class="fa fa-home spaceRight"></i>');
 			}
-			
 		/*-----------------------------------------------------------------------------------*/
 		/*  If Comment Metadata exist or Edit Comments Link exist
 		/*-----------------------------------------------------------------------------------*/ 
@@ -30,29 +30,28 @@
 			if ( $( '.reply' ).length ) {
 				$('.reply').addClass('smallPart');
 			}
-		
 		/*-----------------------------------------------------------------------------------*/
 		/*  Manage Sidebar
 		/*-----------------------------------------------------------------------------------*/ 
 			$('.openSidebar').click(function() {
-				$('.widget-area, #page.site, .openSidebar, .openSearch').toggleClass('yesOpen');
+				if($('body').hasClass('sidebar-open-default')) {
+					$('body').removeClass('sidebar-open-default')
+				} else {
+					$('.widget-area, #page.site, .openSidebar, .openSearch').toggleClass('yesOpen');
+				}
 			});
-		
 		/*-----------------------------------------------------------------------------------*/
 		/*  Search button
 		/*-----------------------------------------------------------------------------------*/ 
 			$('.openSearch').click(function() {
 				$('#search-full').fadeIn(300);
-				if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-				} else {
+				if (!mobileDetect) {
 					$("#search-full #search-field").focus();
 				}
 			});
-
 			$('.closeSearch').click(function() {
 				$('#search-full').fadeOut(300);
 			});
-			
 		/*-----------------------------------------------------------------------------------*/
 		/*  Change Color Sidebar & Search Button
 		/*-----------------------------------------------------------------------------------*/ 
@@ -64,7 +63,6 @@
 					$('.openSidebar, .openSearch').removeClass("sidebarColor");
 				}
 			});
-			
 		/*-----------------------------------------------------------------------------------*/
 		/*  Menu Widget
 		/*-----------------------------------------------------------------------------------*/
@@ -85,17 +83,16 @@
 					}
 				});
 			}
-		
 		/*-----------------------------------------------------------------------------------*/
-		/*  Detect Mobile Browser
+		/*  Detect touch screen device
 		/*-----------------------------------------------------------------------------------*/ 
-		if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		} else {
-			
-			$(window).resize(function() {
-				setHeight();
-			});
-			
+		if (!mobileDetect) {
+			/*-----------------------------------------------------------------------------------*/
+			/*  Resize Header
+			/*-----------------------------------------------------------------------------------*/ 
+				$(window).resize(function() {
+					setHeight();
+				});
 			/*-----------------------------------------------------------------------------------*/
 			/*  Scroll To Top
 			/*-----------------------------------------------------------------------------------*/ 
@@ -111,7 +108,5 @@
 					return false;
 				});
 		}
-		
 	});
-	
 })(jQuery);

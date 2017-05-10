@@ -4,10 +4,10 @@
  Author: Jaroslav Svetlik
  Author URI: http://theme-vision.com/
  Description: Agama is a free Multi-Purpose WordPress theme. It’s perfect for web agency business, corporate business, personal and parallax business portfolio, photography sites and freelancer. Is built on BootStrap with parallax support, is responsive, clean, modern, flat and minimal. Agama is e-commerce (WooCommerce) Compatible, WPML, RTL, Retina-Ready, SEO Friendly and with parallax. 3 Superb header variations. Check demo: http://demo.theme-vision.com
- Version: 1.2.4
+ Version: 1.2.8.10
  License: GNU General Public License v2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
- Tags: one-column, two-columns, right-sidebar, left-sidebar, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready, e-commerce, entertainment, news, photography
+ Tags: one-column, two-columns, right-sidebar, left-sidebar, grid-layout, flexible-header, accessibility-ready, buddypress, custom-background, custom-header, custom-logo, custom-menu, custom-colors, editor-style, featured-image-header, featured-images, full-width-template, footer-widgets, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, blog, e-commerce, education, entertainment, food-and-drink, holiday, news, photography, portfolio
  Text Domain: agama
 */
 
@@ -165,7 +165,6 @@ only screen and ( min-resolution: 1.25dppx)
 	display: table;
 	content: "";
 }
-
 
 /* =Repeatable patterns
 -------------------------------------------------------------- */
@@ -1209,6 +1208,15 @@ body.sticky_header #main-wrapper {
 	.site-header .sticky-header.sticky-header-shrink nav a {
 		font-size: 1em;
 	}
+	/* Blog Small Thumbs Layout */
+	div.small-thumbs .entry-image {
+		display: block;
+		float: none !important;
+		margin: auto auto 20px auto !important;
+		text-align: center;
+		width: 100% !important;
+		height: auto;
+	}
 }
 @media screen and (max-width: 32.25em) {
 	.site-header .sticky-header nav a {
@@ -1231,45 +1239,29 @@ a[rel="prev"] {
 	font-weight: 700;
 	text-transform: uppercase;
 }
-.top-links > ul > li.current-menu-item, 
-.top-links > div > ul > li.current-menu-item, 
-.top-links > ul > li.current_page_item, 
-.top-links > div > ul > li.current_page_item,
-#top-navigation > ul > li.current-menu-item,
-#top-navigation > div > ul > li.current-menu-item,
-#top-navigation > ul > li.current_page_item,
-#top-navigation > div > ul > li.current_page_item,
-header#masthead nav > div > ul > li.current-menu-item,
 header#masthead nav > ul > li.current-menu-item,
-header#masthead nav > div > ul > li.current_page_item,
 header#masthead nav > ul > li.current_page_item,
-header#masthead nav div ul li ul.sub-menu,
 header#masthead nav ul li ul.sub-menu {
 	border-bottom: 3px;
 	border-bottom-style: solid;
 }
-header#masthead nav div ul li ul.sub-menu li,
 header#masthead nav ul li ul.sub-menu li {
 	border-left: 3px solid transparent;
 	position: relative;
 }
-header#masthead nav div ul li ul.sub-menu li:hover,
 header#masthead nav ul li ul.sub-menu li:hover {
 	border-left: 3px;
 	border-left-style: solid;
 }
-header#masthead nav div ul li ul.sub-menu li ul.sub-menu,
 header#masthead nav ul li ul.sub-menu li ul.sub-menu {
 	-webkit-box-shadow: rgba(175, 175, 175, 0.74902) -2px 4px 15px -2px;
     -moz-box-shadow: rgba(175, 175, 175, 0.74902) -2px 4px 15px -2px;
     box-shadow: rgba(175, 175, 175, 0.74902) -2px 4px 15px -2px;
 }
-header#masthead nav div ul li ul.sub-menu li ul.sub-menu li,
 header#masthead nav ul li ul.sub-menu li ul.sub-menu li {
 	border-right: 3px solid transparent;
 	border-left: 0 none;
 }
-header#masthead nav div ul li ul.sub-menu li ul.sub-menu li:hover,
 header#masthead nav ul li ul.sub-menu li ul.sub-menu li:hover {
 	border-right: 3px;
 	border-right-style: solid;
@@ -2040,42 +2032,6 @@ footer[role="contentinfo"] .social {
 	padding: 0;
 }
 
-/* =Main content and comment content - Grid Style
--------------------------------------------------------------- */
-.grid-style .entry-title {
-	margin: 0;
-}
-.grid-style .article-entry-wrapper {
-	padding: 15px;
-}
-.single-post .grid-style .entry-title {
-	padding: 15px 0 0 0;
-}
-.grid-style .entry-title {
-	padding: 15px 15px 0px 15px;
-}
-.grid-style .entry-header .comments-link {
-	padding: 0 15px;
-}
-
-/* =Main content and comment content - List Style
--------------------------------------------------------------- */
-.list-style .entry-header {
-	margin-bottom: 30px;
-}
-.list-style .entry-title {
-	font-size: 16px;
-	line-height: 1.2;
-	clear: none;
-	margin: 0 0 5px 0;
-}
-.single-post .list-style .entry-content {
-	margin-left: 0;
-}
-.list-style .entry-content {
-	margin-left: 110px;
-}
-
 /* =Frontpage content and comment content
 -------------------------------------------------------------- */
 .page-template-front-page .entry-title {
@@ -2449,7 +2405,7 @@ body:not(.single-post) .article-wrapper {
 .article-wrapper:last-child {
 	margin-bottom: 0;
 }
-.js-isotope .article-wrapper {
+body.blog_grid .js-isotope .article-wrapper {
 	width: 30%;
 	float: left;
 	overflow: hidden;
@@ -2496,9 +2452,49 @@ span.edit-link a {
 	font-weight: normal;
 }
 
+/* = Blog Layout - List
+-------------------------------------------------------------- */
+div.list-style .entry-header {
+	margin-bottom: 30px;
+}
+div.list-style .entry-title {
+	font-size: 16px;
+	line-height: 1.2;
+	clear: none;
+	margin: 0 0 5px 0;
+}
+body.single-post div.list-style .entry-content {
+	margin-left: 0;
+}
+div.list-style .entry-content {
+	margin-left: 110px;
+}
+
+/* = Blog Layout - Grid
+-------------------------------------------------------------- */
+div.grid-style .entry-title {
+	margin: 0;
+	padding: 15px 15px 5px 15px;
+}
+body.single-post .grid-style .entry-title {
+	padding: 15px 0 0 0;
+}
+div.grid-style .article-entry-wrapper {
+	padding: 15px;
+}
+div.grid-style .entry-header .comments-link {
+	padding: 0 15px;
+}
+
 /* = Blog Layout - Small Thumbs
 -------------------------------------------------------------- */
-.small-thumbs .entry-title h2 {
+body:not(.single-post) div.small_thumbs {
+	padding-bottom: 60px;
+}
+div.small-thumbs .entry {
+    position: relative;
+}
+div.small-thumbs .entry-title h2 {
 	font-family: 'Raleway', sans-serif;
 	font-size: 20px;
     font-weight: 600;
@@ -2506,46 +2502,43 @@ span.edit-link a {
 	margin: 0;
 	
 }
-.article-wrapper.small_thumbs {
-	margin-bottom: 0;
-    border-bottom: 0;
-}
-.small-thumbs .entry {
-    position: relative;
-    margin: 0 0 50px;
-    padding: 0 0 50px;
-    border-bottom: 1px dashed #e3e3e3;
-}
-.small-thumbs .entry-image > a {
+div.small-thumbs .entry-image > a {
 	display: block;
     position: relative;
     width: 100%;
     height: auto;
 }
-.small-thumbs .entry-image {
+div.small-thumbs .entry-image {
     float: left;
     width: 300px;
     margin: 0 30px 0 0;
 	overflow: hidden;
 }
-.small-thumbs .entry-image img {
+body.single-post div.small-thumbs .entry-image {
+	display: block;
+	float: none;
+	width: 100%;
+	height: auto;
+	margin-bottom: 20px;
+}
+div.small-thumbs .entry-image img {
     border-radius: 0;
 }
-.small-thumbs .entry-image img.image-grow {
+div.small-thumbs .entry-image img.image-grow {
 	transition: all .2s ease-in-out;
 }
-.small-thumbs .entry-image img.image-grow:hover {
+div.small-thumbs .entry-image img.image-grow:hover {
 	transform: scale(1.1);
 }
 .entry-c {
     position: relative;
     overflow: hidden;
 }
-.small-thumbs .entry-meta {
+div.small-thumbs .entry-meta {
     margin: 10px -10px -15px 0;
     list-style: none;
 }
-.small-thumbs .entry-meta li {
+div.small-thumbs .entry-meta li {
     float: left;
     font-size: 13px;
     line-height: 14px;
@@ -2554,29 +2547,29 @@ span.edit-link a {
     font-family: 'Crete Round', serif;
     font-style: italic;
 }
-.small-thumbs .entry-meta li:first-child:before {
+div.small-thumbs .entry-meta li:first-child:before {
 	content: '';
 	margin-right: 0;
 }
-.small-thumbs .entry-meta li:before {
+div.small-thumbs .entry-meta li:before {
     content: '/';
     display: inline-block;
     margin-right: 10px;
     opacity: 0.5;
 }
-.small-thumbs .entry-meta li i {
+div.small-thumbs .entry-meta li i {
     position: relative;
     top: 1px;
     font-size: 14px;
     margin-right: 3px;
 }
-.small-thumbs .entry-content {
+div.small-thumbs .entry-content {
     margin-top: 20px;
 }
-.small-thumbs .entry-content p:last-child {
+div.small-thumbs .entry-content p:last-child {
 	margin-bottom: 0;
 }
-.small-thumbs #content p {
+div.small-thumbs #content p {
     line-height: 1.8;
 }
 

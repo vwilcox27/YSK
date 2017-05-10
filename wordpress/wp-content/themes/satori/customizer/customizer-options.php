@@ -26,42 +26,53 @@ function customizer_library_satori_options() {
 	$options['sections'] = $sections;
     
 	
-	// Site Layout Options
-	$section = 'satori-site-layout-section';
-
-	$sections[] = array(
-		'id' => $section,
-		'title' => __( 'Layout Options', 'satori' ),
-		'priority' => '30'
-	);
+	$panel = 'satori-panel-layout';
     
+    $panels[] = array(
+        'id' => $panel,
+        'title' => __( 'Layout Settings', 'satori' ),
+        'priority' => '30'
+    );
+    
+    $section = 'satori-site-layout-section-site';
+
+    $sections[] = array(
+        'id' => $section,
+        'title' => __( 'Site Layout', 'satori' ),
+        'priority' => '20',
+        'panel' => $panel
+    );
     
     $options['satori-banner-titles'] = array(
         'id' => 'satori-banner-titles',
         'label'   => __( 'Remove Banner Titles', 'satori' ),
         'section' => $section,
         'type'    => 'checkbox',
-        'description' => __( 'Select this box to hide the page titles in the top banner on pages', 'satori' ),
         'default' => 0,
     );
     $options['satori-content-titles'] = array(
         'id' => 'satori-content-titles',
-        'label'   => __( 'Remove Content Titles', 'satori' ),
+        'label'   => __( 'Remove Page Titles', 'satori' ),
         'section' => $section,
         'type'    => 'checkbox',
-        'description' => __( 'Select this box to hide the page titles in the content area', 'satori' ),
         'default' => 0,
+    );
+    $options['satori-upsell-layout'] = array(
+        'id' => 'satori-upsell-layout',
+        'section' => $section,
+        'type'    => 'upsell',
+        'description' => __( '<b>Premium Extra Features:</b><br />- Site Boxed / Full Width layouts<br />- Set WooCommerce Shop, Archive & Single pages to Full Width', 'satori' )
     );
 	
 	
-	// Header Layout Options
-	$section = 'satori-header-section';
+	$section = 'satori-site-layout-section-header';
 
-	$sections[] = array(
-		'id' => $section,
-		'title' => __( 'Header Options', 'satori' ),
-		'priority' => '30'
-	);
+    $sections[] = array(
+        'id' => $section,
+        'title' => __( 'Header', 'satori' ),
+        'priority' => '30',
+        'panel' => $panel
+    );
 	
     $choices = array(
         'satori-header-layout-one' => __( 'Header Layout One', 'satori' ),
@@ -100,7 +111,6 @@ function customizer_library_satori_options() {
         'label'   => __( 'Hide Search', 'satori' ),
         'section' => $section,
         'type'    => 'checkbox',
-        'description' => __( 'Select this box to hide the site search', 'satori' ),
         'default' => 0,
     );
     $options['satori-remove-phone'] = array(
@@ -124,13 +134,13 @@ function customizer_library_satori_options() {
     endif;
     
     
-    // Slider Settings
-    $section = 'satori-slider-section';
+    $section = 'satori-site-layout-section-slider';
 
     $sections[] = array(
         'id' => $section,
-        'title' => __( 'Slider Options', 'satori' ),
-        'priority' => '35'
+        'title' => __( 'Home Page Slider', 'satori' ),
+        'priority' => '40',
+        'panel' => $panel
     );
     
     $choices = array(
@@ -171,11 +181,65 @@ function customizer_library_satori_options() {
         'section' => $section,
         'type'    => 'select',
         'choices' => $choices,
-        'description' => __( 'This sizing is also adjusted to the <b>Page Banner</b> to keep the pages looking the same', 'satori' ),
+        'description' => __( 'This sizing is also adjusted to the <b>Page Banner</b>', 'satori' ),
         'default' => 'satori-slider-size-medium'
     );
+    $options['satori-upsell-slider'] = array(
+        'id' => 'satori-upsell-slider',
+        'section' => $section,
+        'type'    => 'upsell',
+        'description' => __( '<b>Premium Extra Features:</b><br />- Link slide to its own single page<br />- Remove the slider title/text<br />- Stop auto scroll', 'satori' )
+    );
+    
+    
+    $section = 'satori-site-layout-section-blog';
 
+    $sections[] = array(
+        'id' => $section,
+        'title' => __( 'Blog', 'satori' ),
+        'priority' => '50',
+        'panel' => $panel
+    );
+    
+    $options['satori-blog-cats'] = array(
+        'id' => 'satori-blog-cats',
+        'label'   => __( 'Exclude Blog Categories', 'satori' ),
+        'section' => $section,
+        'type'    => 'text',
+        'description' => __( 'Enter the ID\'s of the post categories you\'d like to EXCLUDE from the Blog, enter only the ID\'s with a minus sign (-) before them, separated by a comma (,)<br />Eg: "-13, -17, -19"<br />If you enter the ID\'s without the minus then it\'ll show ONLY posts in those categories.', 'satori' )
+    );
+    $options['satori-upsell-blog'] = array(
+        'id' => 'satori-upsell-blog',
+        'section' => $section,
+        'type'    => 'upsell',
+        'description' => __( '<b>Premium Extra Features:</b><br />- Set Blog List, Srchive and Single pages to Full Width<br />- Select between 2 blog layouts<br />- Set and adjust Blog List Summary/Excerpts', 'satori' )
+    );
+    
+    
+    $section = 'satori-site-layout-section-footer';
 
+    $sections[] = array(
+        'id' => $section,
+        'title' => __( 'Footer', 'satori' ),
+        'priority' => '60',
+        'panel' => $panel
+    );
+    
+    $options['satori-footer-bottombar'] = array(
+        'id' => 'satori-footer-bottombar',
+        'label'   => __( 'Remove the Bottom Bar', 'satori' ),
+        'section' => $section,
+        'type'    => 'checkbox',
+        'default' => 0,
+    );
+    $options['satori-upsell-footer'] = array(
+        'id' => 'satori-upsell-footer',
+        'section' => $section,
+        'type'    => 'upsell',
+        'description' => __( '<b>Premium Extra Features:</b><br />- Select between 3 footer layouts', 'satori' )
+    );
+    
+    
 	// Colors
 	$section = 'colors';
 
@@ -200,6 +264,12 @@ function customizer_library_satori_options() {
 		'type'    => 'color',
 		'default' => $secondary_color,
 	);
+    $options['satori-upsell-color'] = array(
+        'id' => 'satori-upsell-color',
+        'section' => $section,
+        'type'    => 'upsell',
+        'description' => __( '<b>Premium Extra Features:</b><br />Premium offers extra color settings to change the header, footer and bottom bar colors and more', 'satori' )
+    );
 
 	// Font Options
 	$section = 'satori-typography-section';
@@ -244,43 +314,6 @@ function customizer_library_satori_options() {
 	);
 	
 	
-	// Blog Settings
-    $section = 'satori-blog-section';
-
-    $sections[] = array(
-        'id' => $section,
-        'title' => __( 'Blog Options', 'satori' ),
-        'priority' => '50'
-    );
-    
-    $options['satori-blog-cats'] = array(
-        'id' => 'satori-blog-cats',
-        'label'   => __( 'Exclude Blog Categories', 'satori' ),
-        'section' => $section,
-        'type'    => 'text',
-        'description' => __( 'Enter the ID\'s of the post categories you\'d like to EXCLUDE from the Blog, enter only the ID\'s with a minus sign (-) before them, separated by a comma (,)<br />Eg: "-13, -17, -19"<br />If you enter the ID\'s without the minus then it\'ll show ONLY posts in those categories.', 'satori' )
-    );
-	
-	
-	// Footer Settings
-    $section = 'satori-footer-section';
-
-    $sections[] = array(
-        'id' => $section,
-        'title' => __( 'Footer Layout Options', 'satori' ),
-        'priority' => '85'
-    );
-    
-    $options['satori-footer-bottombar'] = array(
-        'id' => 'satori-footer-bottombar',
-        'label'   => __( 'Remove the Bottom Bar', 'satori' ),
-        'section' => $section,
-        'type'    => 'checkbox',
-        'description' => __( 'Click this to hide the bottom bar of the footer', 'satori' ),
-        'default' => 0,
-    );
-	
-	
 	// Site Text Settings
     $section = 'satori-website-section';
 
@@ -296,15 +329,14 @@ function customizer_library_satori_options() {
         'section' => $section,
         'type'    => 'text',
         'default' => __( 'Cape Town, South Africa', 'satori' ),
-        'description' => __( 'This is the address in the header top bar and the social footer', 'satori' )
+        'description' => __( 'The address in the header and social footer', 'satori' )
     );
     $options['satori-website-head-no'] = array(
         'id' => 'satori-website-head-no',
         'label'   => __( 'Header Phone Number', 'satori' ),
         'section' => $section,
         'type'    => 'text',
-        'default' => __( 'Call Us: +2782 444 YEAH', 'satori' ),
-        'description' => __( 'This is the phone number in the header top bar', 'satori' )
+        'default' => __( 'Call Us: +2782 444 YEAH', 'satori' )
     );
     
     $options['satori-website-error-head'] = array(
@@ -330,6 +362,12 @@ function customizer_library_satori_options() {
         'type'    => 'textarea',
         'default' => __( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'satori'),
         'description' => __( 'Enter the default text for when no search results are found', 'satori' )
+    );
+    $options['satori-upsell-website'] = array(
+        'id' => 'satori-upsell-website',
+        'section' => $section,
+        'type'    => 'upsell',
+        'description' => __( '<b>Premium Extra Features:</b><br />- Change the footer attribution text to your own copy', 'satori' )
     );
 	
 	
@@ -371,6 +409,12 @@ function customizer_library_satori_options() {
         'label'   => __( 'Flickr', 'satori' ),
         'section' => $section,
         'type'    => 'text',
+    );
+    $options['satori-upsell-social'] = array(
+        'id' => 'satori-upsell-social',
+        'section' => $section,
+        'type'    => 'upsell',
+        'description' => __( '<b>Premium Extra Features:</b><br />- Premium has over 20 different social links available<br />- Custom setting to link to any social network', 'satori' )
     );
 	
 

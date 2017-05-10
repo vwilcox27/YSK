@@ -91,6 +91,9 @@ function pixgraphy_setup() {
 	*/
 
 	add_theme_support( 'woocommerce' );
+	add_theme_support( 'wc-product-gallery-zoom' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
+	add_theme_support( 'wc-product-gallery-slider' );
 }
 endif; // pixgraphy_setup
 add_action( 'after_setup_theme', 'pixgraphy_setup' );
@@ -132,10 +135,10 @@ if(!class_exists('Pixgraphy_Plus_Features')){
 			<a title="<?php esc_html_e( 'Review Pixgraphy', 'pixgraphy' ); ?>" href="<?php echo esc_url( 'https://wordpress.org/support/view/theme-reviews/pixgraphy/' ); ?>" target="_blank" id="about_pixgraphy">
 			<?php esc_html_e( 'Review Pixgraphy', 'pixgraphy' ); ?>
 			</a><br/>
-			<a href="<?php echo esc_url( 'http://themefreesia.com/theme-instruction/pixgraphy/' ); ?>" title="<?php esc_html_e( 'Theme Instructions', 'pixgraphy' ); ?>" target="_blank" id="about_pixgraphy">
+			<a href="<?php echo esc_url( 'https://themefreesia.com/theme-instruction/pixgraphy/' ); ?>" title="<?php esc_html_e( 'Theme Instructions', 'pixgraphy' ); ?>" target="_blank" id="about_pixgraphy">
 			<?php esc_html_e( 'Theme Instructions', 'pixgraphy' ); ?>
 			</a><br/>
-			<a href="<?php echo esc_url( 'http://themefreesia.com/support-forum/' ); ?>" title="<?php esc_html_e( 'Forum', 'pixgraphy' ); ?>" target="_blank" id="about_pixgraphy">
+			<a href="<?php echo esc_url( 'https://tickets.themefreesia.com/' ); ?>" title="<?php esc_html_e( 'Support Ticket', 'pixgraphy' ); ?>" target="_blank" id="about_pixgraphy">
 			<?php esc_html_e( 'Forum', 'pixgraphy' ); ?>
 			</a><br/>
 		<?php
@@ -143,7 +146,7 @@ if(!class_exists('Pixgraphy_Plus_Features')){
 	}
 	$wp_customize->add_section('pixgraphy_upgrade_links', array(
 		'title'					=> __('About Pixgraphy', 'pixgraphy'),
-		'priority'				=> 1,
+		'priority'				=> 2,
 	));
 	$wp_customize->add_setting( 'pixgraphy_upgrade_links', array(
 		'default'				=> false,
@@ -181,6 +184,11 @@ if(!class_exists('Pixgraphy_Plus_Features')){
 	require get_template_directory() . '/inc/customizer/functions/social-icons.php';
 	require get_template_directory() . '/inc/customizer/functions/featured-content-customizer.php' ;
 }
+if(!class_exists('Pixgraphy_Plus_Features')){
+	// Add Upgrade to Plus Button.
+	require_once( trailingslashit( get_template_directory() ) . 'inc/upgrade-plus/class-customize.php' );
+}
+/*
 /** 
 * Render the site title for the selective refresh partial. 
 * @see pixgraphy_customize_register() 
@@ -200,6 +208,15 @@ bloginfo( 'description' );
 }
 add_action( 'customize_register', 'pixgraphy_customize_register' );
 add_action( 'customize_preview_init', 'pixgraphy_customize_preview_js' );
+/**************************************************************************************/
+function pixgraphy_hide_previous_custom_css( $wp_customize ) { 
+	// Bail if not WP 4.7. 
+	if ( ! function_exists( 'wp_get_custom_css_post' ) ) { 
+		return; 
+	} 
+		$wp_customize->remove_control( 'pixgraphy_theme_options[pixgraphy_custom_css]' ); 
+} 
+add_action( 'customize_register', 'pixgraphy_hide_previous_custom_css'); 
 
 /******************* Pixgraphy Header Display *************************/
 function pixgraphy_header_display(){
@@ -249,4 +266,3 @@ if ( ! function_exists( 'pixgraphy_the_custom_logo' ) ) :
  	    }
  	} 
  	endif;
-?>

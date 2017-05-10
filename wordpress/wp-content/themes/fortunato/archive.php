@@ -34,15 +34,13 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) {
-				the_posts_navigation();
-			} else {
+			<?php
 				the_posts_pagination( array(
 					'prev_text'          => __( '<i class="fa fa-angle-double-left spaceRight"></i>Previous', 'fortunato' ),
 					'next_text'          => __( 'Next<i class="fa fa-angle-double-right spaceLeft"></i>', 'fortunato' ),
 					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'fortunato' ) . ' </span>',
 				) );
-			} ?>
+			?>
 
 		<?php else : ?>
 

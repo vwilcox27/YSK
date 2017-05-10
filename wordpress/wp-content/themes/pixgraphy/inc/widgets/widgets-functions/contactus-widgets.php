@@ -110,4 +110,3 @@ class pixgraphy_contact_widgets extends WP_Widget {
 	echo $after_widget .'<!-- end .widget_contact -->';
 	}
 }
-?>

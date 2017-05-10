@@ -16,11 +16,11 @@ get_header(); ?>
 			
 			<?php
 				the_post_navigation( array(
-					'next_text' => '<div class="meta-nav" aria-hidden="true">' . __( 'Next Post', 'fortunato' ) . '</div> <i class="fa fa-lg fa-angle-right"></i>' .
-						'<span class="screen-reader-text">' . __( 'Next post:', 'fortunato' ) . '</span> ' .
+					'next_text' => '<div class="meta-nav" aria-hidden="true">' . esc_html__( 'Next Post', 'fortunato' ) . '</div> <i class="fa fa-lg fa-angle-right"></i>' .
+						'<span class="screen-reader-text">' . esc_html__( 'Next post:', 'fortunato' ) . '</span> ' .
 						'<span class="smallPart">%title</span>',
-					'prev_text' => '<i class="fa fa-lg fa-angle-left"></i><div class="meta-nav" aria-hidden="true">' . __( 'Previous Post', 'fortunato' ) . '</div> ' .
-						'<span class="screen-reader-text">' . __( 'Previous post:', 'fortunato' ) . '</span> ' .
+					'prev_text' => '<i class="fa fa-lg fa-angle-left"></i><div class="meta-nav" aria-hidden="true">' . esc_html__( 'Previous Post', 'fortunato' ) . '</div> ' .
+						'<span class="screen-reader-text">' . esc_html__( 'Previous post:', 'fortunato' ) . '</span> ' .
 						'<span class="smallPart">%title</span>',
 				) );
 			?>

@@ -1,3 +1,5 @@
+<?php if( ! defined( 'ABSPATH' ) ) exit; ?>
+
 <?php $search_post_thumbnails = get_theme_mod('agama_search_page_thumbnails', ''); ?>
 
 <header class="entry-header">

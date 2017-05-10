@@ -1,12 +1,12 @@
 === NextGEN Gallery - WordPress Gallery Plugin ===
 Contributors: photocrati, imagely
-Tags: gallery, wordpress gallery plugin, nextgen, nextgen gallery, photo gallery, photo album, photos, image gallery, image, images, photography, photographer, watermarking, responsive gallery, slideshow, thumbnail gallery, watermarking, watermark
+Tags: wordpress gallery plugin, gallery, nextgen, nextgen gallery, photo gallery, image gallery, photography, slideshow, images, photo, photo album, watermark
 Requires at least: 4.0.0
-Stable tag: 2.1.60
-Tested up to: 4.7.0
+Stable tag: 2.2.3
+Tested up to: 4.7.3
 License: GPLv2
 
-The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 16 million downloads.
+The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 17 million downloads.
 
 == Description ==
 
@@ -53,7 +53,7 @@ Learn more or connect with us:<br>
 *<a href="https://www.imagely.com/podcast/" target="_blank">The WordPress Photography Podcast</a><br>
 *<a href="https://www.imagely.com/docs/nextgen-gallery/" target="_blank">NextGEN Gallery Documentation</a><br>
 *<a href="https://twitter.com/imagely" target="_blank">Imagely on Twitter</a><br>
-*<a href="https://facebook.com/getimagely" target="_blank">Imagely on Facebook</a><br>
+*<a href="https://facebook.com/imagely" target="_blank">Imagely on Facebook</a><br>
 *<a href="https://instagram.com/imagely" target="_blank">Imagely on Instagram</a><br>
 
 == Credits ==
@@ -186,6 +186,51 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 
 == Changelog ==
+
+= V2.2.3 - 04.05.2017 =
+* Fixed:    E_WARNING on Gallery Settings page due to improper use of array_combine() on PHP <= 5.3
+
+= V2.2.2 -  04.04.2017 =
+* Fixed:    Hyperlinks in image descriptions
+* Fixed:    WordPress SEO sitemap image count
+* Fixed:    Removed id parameter in shortcodes
+* Fixed:    Fatal error in Freemius code
+
+= V2.2.1 - 03.13.2017 =
+* NEW:      Template mechanism for all display types
+* NEW:      Review notices
+* Changed:  Updated branding to Imagely
+* Changed:  Added the ability to click on a gallery title and have it open direct to Pro Lightbox
+* Fixed:    Problems with activation after initial installation
+* Fixed:    Don't display legacy shortcodes after creating new galleries
+* Fixed:    false positive malware detection notices against 'eval'
+* Fixed:    Various PHP notices and warnings
+* Fixed:    Issue with dynamic container height for Imagebrowser display types
+
+= V2.1.79 - 02.23.2017 =
+* Secured: Resolved vulnerability with tag cloud displays
+
+= V2.1.77 - 01.31.2017 =
+* Changed:  Corrected Facebook link
+* Changed:  Tags in readme.txt
+* Fixed:    Problem with deactivating other plugin
+
+= V2.1.69 - 01.18.2017 =
+* Fixed:    Ensured compatibility with WordPress 4.7.1
+* Fixed:    Missing option names on setting pages when Wizard active
+* Fixed:    Ensure that NextGEN Gallery is always loaded after it's extension plugins in WP 4.7
+* Fixed:    Pope product uninstaller not running during activation
+
+= V2.1.62 - 12.15.2016 =
+* Fixed:   Typo in notice for launching the gallery wizard
+* Fixed:   The ability to dismiss the gallery wizard notice
+
+= V2.1.61 - 12.14.2016 =
+* NEW:     Gallery creation wizard for new users
+* Fixed:   Shortcodes in widgets not getting substituted in Divi
+* Fixed:   Ensure that NGG placeholder text doesn't get styled incorrectly by other themes
+* Fixed:   Various thickbox issues on custom post type pages
+* Fixed:   Hide IGW placeholder images in Yoast feed
 
 = V2.1.60 - 11.22.2016 =
 * Secured: Ensure that only .css files can be edited using Styles tab

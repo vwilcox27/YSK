@@ -855,7 +855,6 @@ function athena_fonts(){
         'Arial Black, Gadget, sans-serif'       => 'Arial Black',
         'Courier New, monospace'                => 'Courier New',
         'Lobster Two, cursive'                  => 'Lobster - Cursive',
-        'Fredericka the Great, cursive'         => 'Fredricka - Cursive',
         'Georgia, serif'                        => 'Georgia',
         'Impact, Charcoal, sans-serif'          => 'Impact',
         'Lucida Console, Monaco, monospace'     => 'Lucida Console',

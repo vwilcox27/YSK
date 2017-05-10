@@ -19,7 +19,7 @@ function athena_setup() {
     
     
         if( !defined( 'ATHENA_VERSION' ) ) :
-            define('ATHENA_VERSION', '1.0.8');
+            define('ATHENA_VERSION', '1.1.0');
         endif;
     
         

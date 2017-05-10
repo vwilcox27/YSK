@@ -1,19 +1,22 @@
 === SiteOrigin Widgets Bundle ===
 Tags: bundle, widget, button, slider, image, carousel, price table, google maps, tinymce, social links
-Requires at least: 3.9
-Tested up to: 4.6
-Stable tag: 1.7.2
-Build time: 2016-11-10T09:26:59+02:00
+Requires at least: 4.2
+Tested up to: 4.7.4
+Stable tag: 1.8.4
+Build time: 2017-04-30T11:08:55+02:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis
+Donate link: https://siteorigin.com/downloads/contribution/
+
+The SiteOrigin widget bundle gives you a collection of widgets that you can use and customize. All the widgets are built on our powerful framework, giving you advanced forms, unlimited colours and 1500+ icons.
 
 == Description ==
 
-[vimeo https://vimeo.com/102103379]
-
-Widgets are great. No matter where you’re using them. In a [Page Builder](http://siteorigin.com/page-builder/) page or on your widgetized areas.
-
 The SiteOrigin widget bundle gives you a collection of widgets that you can use and customize. All the widgets are built on our powerful framework, giving you advanced forms, unlimited colours and 1500+ icons.
+
+Widgets are great. No matter where you’re using them. In a [Page Builder](http://siteorigin.com/page-builder/) page or on your widgetized areas. It's even compatible with other popular page building plugins.
+
+[vimeo https://vimeo.com/102103379]
 
 The collection is growing, but here’s what we have so far.
 
@@ -50,6 +53,80 @@ The SiteOrigin Widgets Bundle is the perfect platform to build widgets for your 
 3. An example of the button widget.
 
 == Changelog ==
+
+= 1.8.5 - 27 April 2017 =
+* Fixed button hover class.
+
+= 1.8.4 - 27 April 2017 =
+* Fixed button URLs.
+* Removed image `sizes` attribute when Jetpack Photon is enabled.
+* Fixed missing widget handling for misnamed widgets.
+
+= 1.8.3 - 26 April 2017 =
+* Contact Form: Improved type Validation and added empty name check
+* Contact Form: Add Field Design Settings
+* Testimonial: Add responsive image sizes settings
+* Added checks to prevent PHP warnings
+* Improved handling of empty order fields.
+* Small code refactoring in price table widget.
+* Ensure all SiteOrigin widgets are grouped together in Page Builder.
+* Slider: Remove slider sentinel contents to avoid things like duplicated video iframe for embedded videos
+* Fix TinyMCE z-index.
+* Headline: Fixed typo that tied subheadline new window to headline
+* Ensure fittext is done before setting up hero slider.
+* Ensure google font fields work in live editors/previews.
+* Features: Allow specifying position of features widgets icons.
+* Added * next to labels of required fields.
+* Make required field indicator optional and display legend when enabled.
+* Set default color option in wpColorPicker.
+* Small refactor to make more use of `get_template_variables`.
+* Button: Added field for `rel` attribute.
+* Maps: Added setting for global Google API key.
+* Small fix to allow checkboxes to act as 'conditional' state emitters.
+* Features: Change text form field to a tinymce field
+* Properly work with new Page Builder caching system
+* Ensure footer templates only printed when editing with Elementor.
+* Small IE8 fix
+* Contact: Prevent form fields from having 0px height if no height specified.
+* Fixed Google Maps info windows.
+* Image: Don't output empty attributes.
+* Don't attempt to load maps API if already loaded.
+
+= 1.8.2 - 1 April 2017 =
+* Compatibility with upcoming Page Builder 2.5 release.
+* Fixed compatibility with Elementor 1.4+.
+* Fixed incompatibility with Jetpack.
+
+= 1.8.1 - 3 February 2017 =
+* Fixed empty array warning.
+* Contact Form: Prevent empty title markup from being echoed.
+* Contact Form: Display email after name
+* Slider: Account for 0 speed.
+* Features: Fix sizing issue when using images instead of icons.
+* Use default unit if missing for measurement fields.
+* Price Table: Shortcode support for feature text.
+* Testimonial: Updated text radius label and fixed resulting functionality.
+* Revert change made to post search for link field.
+* Link Field: Make sure we have a valid post_types value.
+
+= 1.8 - 31 January 2017 =
+* Introduced compatibility system.
+* Added compatibility with Elementor and Beaver Builder.
+* Ensure radio inputs in repeaters have their checked property set correctly.
+* Various Call to Action widget improvements.
+* Use `text-align: center;` for features icons.
+* Always use HTTPS for Google Webfonts.
+* Post Selector: Exclude current post id
+* Post Selector: Add filter returned query
+* Post Carousel: Prevent empty title output.
+* Google Maps: Add ability to set link for Static Map.
+* Social Links: Add title field and title attributes for links.
+* Features: Add title text field for features
+* Button Widget: Add Font setting
+* Contact: Add radio field Type
+* Taxonomy: New Window Setting
+* Added a way of specifying post types for link field.
+* Introduced a global widget setup action.
 
 = 1.7.2 - 09 November 2016 =
 * Made fixes to pass PHP 7 compatibility checks.

@@ -73,4 +73,4 @@ if( 'default' == $layout ) { //Settings from customizer
 	} 
 }
 get_sidebar();
-get_footer(); ?>
+get_footer();

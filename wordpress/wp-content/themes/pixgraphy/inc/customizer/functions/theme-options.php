@@ -37,6 +37,19 @@ $pixgraphy_settings = pixgraphy_get_theme_options();
 	'priority' => 20,
 	'panel' => 'pixgraphy_wordpress_default_panel'
 	));
+	$wp_customize->add_setting( 'pixgraphy_theme_options[pixgraphy_remove_parallax_fromheader]', array(
+		'default' => $pixgraphy_settings['pixgraphy_remove_parallax_fromheader'],
+		'sanitize_callback' => 'pixgraphy_checkbox_integer',
+		'type' => 'option',
+	));
+	$wp_customize->add_control( 'pixgraphy_theme_options[pixgraphy_remove_parallax_fromheader]', array(
+		'priority'=>20,
+		'label' => __('Remove Parallax Effect on Header Image', 'pixgraphy'),
+		'description' => __('Use 1920x350px dimension image','pixgraphy'),
+		'section' => 'header_image',
+		'type' => 'checkbox',
+	));
+
 	$wp_customize->add_section('pixgraphy_custom_header', array(
 		'title' => __('Pixgraphy Options', 'pixgraphy'),
 		'priority' => 503,
@@ -198,4 +211,3 @@ $pixgraphy_settings = pixgraphy_get_theme_options();
 	'priority' => 60,
 	'panel' => 'pixgraphy_wordpress_default_panel'
 	));
-?>

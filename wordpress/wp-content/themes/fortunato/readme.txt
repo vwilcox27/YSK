@@ -1,5 +1,5 @@
 = Fortunato Free =
-* by the CrestaProject team, http://crestaproject.com/
+* by the CrestaProject team, https://crestaproject.com/
 
 == ABOUT Fortunato Free ==
 Fortunato is modern & minimal responsive WordPress Blog Theme, a large column in the center of the screen, and the sidebar that appears when you click on the appropriate button, unlimited colors and theme options.
@@ -40,6 +40,53 @@ one-column, left-sidebar, custom-menu, custom-colors, sticky-post, featured-imag
 3. Log into your WP admin panel and click on the Design tab. Now click on the Fortunato theme to activate it.
 
 == Changelog ==
+= Version 1.5.1 =
+* Added the possibility do set the sidebar open by default
+* Minor bug fixes
+
+= Version 1.5.0 =
+* Improved compatibility with WooCommerce version 3.0.1
+
+= Version 1.4.9 =
+* Improved compatibility with WooCommerce version 3.x
+
+= Version 1.4.8 =
+* Minor bug fixes
+
+= Version 1.4.7 =
+* Fixed some strings with escaping
+
+= Version 1.4.6 =
+* Improved search widget CSS
+
+= Version 1.4.5 =
+* Improved social buttons setting
+* Fixed some PHP notices
+
+= Version 1.4.4 =
+* Now Fortunato is no longer compatible with WordPress 4.3 version or lower
+* Added icons to Categories Widget and Archives Widget
+* Minor bug fixes
+
+= Version 1.4.3 =
+* Fixed some strings with escaping
+* Minor bug fixes
+
+= Version 1.4.2 =
+* Updated skip-link-focus and navigation scripts
+* Updated some scripts in the way to detect a mobile device
+* Minor bug fixes
+
+= Version 1.4.1 =
+* Fixed a lot of strings escaping
+* Minor bug fixes
+
+= Version 1.4.0 =
+* Minor bug fixes
+
+= Version 1.3.9 =
+* Updated PRO Version button
+
 = Version 1.3.8 =
 * Added the possibility to show social buttons also in the footer
 * Minor bug fixes

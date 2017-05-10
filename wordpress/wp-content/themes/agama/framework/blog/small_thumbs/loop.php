@@ -1,5 +1,7 @@
 <?php $search_post_thumbnails = get_theme_mod('agama_search_page_thumbnails', ''); ?>
 
+<?php if( ! defined( 'ABSPATH' ) ) exit; ?>
+
 <!-- Small Thumbs -->
 <div class="small-thumbs">
 
@@ -29,14 +31,26 @@
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 			</div><!--.entry-title-->
 			
-			<?php if( get_theme_mod('agama_blog_post_meta', true) ): ?>
+			<?php if( get_theme_mod( 'agama_blog_post_meta', true ) ): ?>
 			<!-- Entry Meta -->
 			<ul class="entry-meta clearfix">
-				<li><i class="fa fa-calendar"></i> <?php the_time('m, Y'); ?></li>
+				
+				<?php if( get_theme_mod( 'agama_blog_post_author', true ) ): ?>
 				<li><a href="<?php the_author_link(); ?>"><i class="fa fa-user"></i> <?php the_author(); ?></a></li>
+				<?php endif; ?>
+				
+				<?php if( get_theme_mod( 'agama_blog_post_date', true ) ): ?>
+				<li><i class="fa fa-calendar"></i> <?php the_time('m, Y'); ?></li>
+				<?php endif; ?>
+
+				<?php if( get_theme_mod( 'agama_blog_post_category', true ) ): ?>
 				<li><i class="fa fa-folder-open"></i> <?php echo get_the_category_list(', '); ?></li>
+				<?php endif; ?>
+				
+				<?php if( get_theme_mod( 'agama_blog_post_comments', true ) ): ?>
 				<li><a href="<?php the_permalink(); ?>#comments"><i class="fa fa-comments"></i> <?php echo Agama::comments_count(); ?></a></li>
-				<li><a href="<?php the_permalink(); ?>"><?php echo Agama::post_format(); ?></a></li>
+				<?php endif; ?>
+
 			</ul><!--.entry-meta-->
 			<?php endif; ?>
 			

@@ -6,7 +6,10 @@
  * @subpackage Pixgraphy
  * @since Pixgraphy 1.0
  */
-
+/********************* Set Default Value if not set ***********************************/
+	if ( !get_theme_mod('pixgraphy_theme_options') ) {
+		set_theme_mod( 'pixgraphy_theme_options', pixgraphy_get_option_defaults_values() );
+	}
 /********************* PIXGRAPHY RESPONSIVE AND CUSTOM CSS OPTIONS ***********************************/
 function pixgraphy_resp_and_custom_css() {
 	$pixgraphy_settings = pixgraphy_get_theme_options();
@@ -15,17 +18,6 @@ function pixgraphy_resp_and_custom_css() {
 	<?php } else{ ?>
 	<meta name="viewport" content="width=1070" />
 	<?php  }
-	if (!empty($pixgraphy_settings['pixgraphy_custom_css'] ) ){
-		$pixgraphy_internal_css = '<!-- Custom CSS -->'."\n";
-		$pixgraphy_internal_css .= '<style type="text/css" media="screen">'."\n";
-		if (!empty($pixgraphy_settings['pixgraphy_custom_css']) ) {
-			$pixgraphy_internal_css .= $pixgraphy_settings['pixgraphy_custom_css']."\n";
-		}
-		$pixgraphy_internal_css .= '</style>'."\n";
-	}
-	if (isset($pixgraphy_internal_css)) {
-		echo $pixgraphy_internal_css;
-	}
 }
 add_filter( 'wp_head', 'pixgraphy_resp_and_custom_css');
 
@@ -73,22 +65,6 @@ function pixgraphy_body_class($classes) {
 	return $classes;
 }
 add_filter('body_class', 'pixgraphy_body_class');
-
-/********************** SCRIPTS FOR DONATE/ UPGRADE BUTTON ******************************/
-function pixgraphy_customize_scripts() {
-	if(!class_exists('Pixgraphy_Plus_Features')){
-	wp_enqueue_script( 'pixgraphy_customizer_custom', get_template_directory_uri() . '/inc/js/customizer-custom-scripts.js', array( 'jquery' ), '20140108', true );
-
-	$pixgraphy_upgrade_links = array(
-							'upgrade_link'              => esc_url('http://themefreesia.com/themes/pixgraphy'),
-							'upgrade_text'              => __( 'Upgrade to Pro', 'pixgraphy' ),
-							);
-		wp_localize_script( 'pixgraphy_customizer_custom', 'pixgraphy_upgrade_links', $pixgraphy_upgrade_links );
-		wp_enqueue_script( 'pixgraphy_customizer_custom' );
-	wp_enqueue_style( 'pixgraphy_customizer_custom', get_template_directory_uri() . '/inc/js/pixgraphy-customizer.css');wp_enqueue_script( 'pixgraphy_customizer_custom' );
-	}
-}
-add_action( 'customize_controls_print_scripts', 'pixgraphy_customize_scripts');
 
 /**************************** SOCIAL MENU *********************************************/
 function pixgraphy_social_links() { ?>
@@ -249,4 +225,23 @@ function pixgraphy_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'pixgraphy_scripts' );
-?>
+/*************************** Importing Custom CSS to the core option added in WordPress 4.7. ****************************************/
+function pixgraphy_custom_css_migrate(){
+$ver = get_theme_mod( 'custom_css_version', false );
+	if ( version_compare( $ver, '4.7' ) >= 0 ) {
+		return;
+	}
+	if ( function_exists( 'wp_update_custom_css_post' ) ) {
+		$pixgraphy_settings = pixgraphy_get_theme_options();
+		if ( $pixgraphy_settings['pixgraphy_custom_css'] != '' ) {
+			$pixgraphy_core_css = wp_get_custom_css(); // Preserve css which is added from core
+			$return   = wp_update_custom_css_post( $pixgraphy_core_css . $pixgraphy_settings['pixgraphy_custom_css'] );
+			if ( ! is_wp_error( $return ) ) {
+				unset( $pixgraphy_settings['pixgraphy_custom_css'] );
+				set_theme_mod( 'pixgraphy_theme_options', $pixgraphy_settings );
+				set_theme_mod( 'custom_css_version', '4.7' );
+			}
+		}
+	}
+}
+add_action( 'after_setup_theme', 'pixgraphy_custom_css_migrate' );

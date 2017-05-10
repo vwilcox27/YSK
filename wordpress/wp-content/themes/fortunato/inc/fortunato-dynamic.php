@@ -8,18 +8,86 @@
 /**
  * Replace Excerpt More
  */
-function fortunato_new_excerpt_more( $more ) {
-	return '...';
+if ( ! function_exists( 'fortunato_new_excerpt_more' ) ) {
+	function fortunato_new_excerpt_more( $more ) {
+		if ( is_admin() ) {
+			return $more;
+		}
+		return '&hellip;';
+	}
 }
 add_filter('excerpt_more', 'fortunato_new_excerpt_more');
 
  /**
  * Delete font size style from tag cloud widget
  */
-function fortunato_fix_tag_cloud($tag_string){
-   return preg_replace("/style='font-size:.+pt;'/", '', $tag_string);
+if ( ! function_exists( 'fortunato_fix_tag_cloud' ) ) {
+	function fortunato_fix_tag_cloud($tag_string){
+	   return preg_replace("/style='font-size:.+pt;'/", '', $tag_string);
+	}
 }
 add_filter('wp_generate_tag_cloud', 'fortunato_fix_tag_cloud',10,3);
+
+ /**
+ * Social Buttons
+ */
+if ( ! function_exists( 'fortunato_social_buttons' ) ) {
+	function fortunato_social_buttons() {
+		$facebookURL = get_theme_mod('fortunato_theme_options_facebookurl', '#');
+		$twitterURL = get_theme_mod('fortunato_theme_options_twitterurl', '#');
+		$googleplusURL = get_theme_mod('fortunato_theme_options_googleplusurl', '#');
+		$linkedinURL = get_theme_mod('fortunato_theme_options_linkedinurl', '#');
+		$instagramURL = get_theme_mod('fortunato_theme_options_instagramurl', '#');
+		$youtubeURL = get_theme_mod('fortunato_theme_options_youtubeurl', '#');
+		$pinterestURL = get_theme_mod('fortunato_theme_options_pinteresturl', '#');
+		$tumblrURL = get_theme_mod('fortunato_theme_options_tumblrurl', '#');
+		$flickrURL = get_theme_mod('fortunato_theme_options_flickrurl', '#');
+		$vkURL = get_theme_mod('fortunato_theme_options_vkurl', '#');
+		$xingURL = get_theme_mod('fortunato_theme_options_xingurl', '');
+		$redditURL = get_theme_mod('fortunato_theme_options_redditurl', '');
+		$skypeNAME = get_theme_mod('fortunato_theme_options_skypename', '');
+		?>
+		<?php if (!empty($facebookURL)) : ?>
+			<a href="<?php echo esc_url($facebookURL); ?>" title="<?php esc_attr_e( 'Facebook', 'fortunato' ); ?>"><i class="fa fa-facebook spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'Facebook', 'fortunato' ); ?></span></i></a>
+		<?php endif; ?>
+		<?php if (!empty($twitterURL)) : ?>
+			<a href="<?php echo esc_url($twitterURL); ?>" title="<?php esc_attr_e( 'Twitter', 'fortunato' ); ?>"><i class="fa fa-twitter spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'Twitter', 'fortunato' ); ?></span></i></a>
+		<?php endif; ?>
+		<?php if (!empty($googleplusURL)) : ?>
+			<a href="<?php echo esc_url($googleplusURL); ?>" title="<?php esc_attr_e( 'Google Plus', 'fortunato' ); ?>"><i class="fa fa-google-plus spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'Google Plus', 'fortunato' ); ?></span></i></a>
+		<?php endif; ?>
+		<?php if (!empty($linkedinURL)) : ?>
+			<a href="<?php echo esc_url($linkedinURL); ?>" title="<?php esc_attr_e( 'Linkedin', 'fortunato' ); ?>"><i class="fa fa-linkedin spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'Linkedin', 'fortunato' ); ?></span></i></a>
+		<?php endif; ?>
+		<?php if (!empty($instagramURL)) : ?>
+			<a href="<?php echo esc_url($instagramURL); ?>" title="<?php esc_attr_e( 'Instagram', 'fortunato' ); ?>"><i class="fa fa-instagram spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'Instagram', 'fortunato' ); ?></span></i></a>
+		<?php endif; ?>
+		<?php if (!empty($youtubeURL)) : ?>
+			<a href="<?php echo esc_url($youtubeURL); ?>" title="<?php esc_attr_e( 'YouTube', 'fortunato' ); ?>"><i class="fa fa-youtube spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'YouTube', 'fortunato' ); ?></span></i></a>
+		<?php endif; ?>
+		<?php if (!empty($pinterestURL)) : ?>
+			<a href="<?php echo esc_url($pinterestURL); ?>" title="<?php esc_attr_e( 'Pinterest', 'fortunato' ); ?>"><i class="fa fa-pinterest spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'Pinterest', 'fortunato' ); ?></span></i></a>
+		<?php endif; ?>
+		<?php if (!empty($tumblrURL)) : ?>
+			<a href="<?php echo esc_url($tumblrURL); ?>" title="<?php esc_attr_e( 'Tumblr', 'fortunato' ); ?>"><i class="fa fa-tumblr spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'Tumblr', 'fortunato' ); ?></span></i></a>
+		<?php endif; ?>
+		<?php if (!empty($flickrURL)) : ?>
+			<a href="<?php echo esc_url($flickrURL); ?>" title="<?php esc_attr_e( 'Flickr', 'fortunato' ); ?>"><i class="fa fa-flickr spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'Flickr', 'fortunato' ); ?></span></i></a>
+		<?php endif; ?>
+		<?php if (!empty($vkURL)) : ?>
+			<a href="<?php echo esc_url($vkURL); ?>" title="<?php esc_attr_e( 'VK', 'fortunato' ); ?>"><i class="fa fa-vk spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'VK', 'fortunato' ); ?></span></i></a>
+		<?php endif; ?>
+		<?php if (!empty($xingURL)) : ?>
+			<a href="<?php echo esc_url($xingURL); ?>" title="<?php esc_attr_e( 'Xing', 'fortunato' ); ?>"><i class="fa fa-xing spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'Xing', 'fortunato' ); ?></span></i></a>
+		<?php endif; ?>
+		<?php if (!empty($redditURL)) : ?>
+			<a href="<?php echo esc_url($redditURL); ?>" title="<?php esc_attr_e( 'Reddit', 'fortunato' ); ?>"><i class="fa fa-reddit-alien spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'Reddit', 'fortunato' ); ?></span></i></a>
+		<?php endif; ?>
+		<?php if (!empty($skypeNAME)) : ?>
+			<a href="skype:<?php echo esc_attr($skypeNAME); ?>?call" title="<?php esc_attr_e( 'Skype', 'fortunato' ); ?>"><i class="fa fa-skype spaceLeftRight"><span class="screen-reader-text"><?php esc_html_e( 'Skype', 'fortunato' ); ?></span></i></a>
+		<?php endif;
+	}
+}
 
  /**
  * Register Custom Settings
@@ -80,7 +148,7 @@ function fortunato_color_primary_register( $wp_customize ) {
 	=====================================================
 	*/
 	$wp_customize->add_section( 'cresta_fortunato_options', array(
-	     'title'    => esc_attr__( 'Fortunato Theme Options', 'fortunato' ),
+	     'title'    => esc_html__( 'Fortunato Theme Options', 'fortunato' ),
 	     'priority' => 50,
 	) );
 	
@@ -243,6 +311,24 @@ function fortunato_color_primary_register( $wp_customize ) {
     ) );
 	
 	/*
+	Sidebar open by default
+	=====================================================
+	*/
+	$wp_customize->add_setting('fortunato_theme_options_sidebaropen', array(
+        'default'    => '',
+        'type'       => 'theme_mod',
+        'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'fortunato_sanitize_checkbox'
+    ) );
+	
+	$wp_customize->add_control('fortunato_theme_options_sidebaropen', array(
+        'label'      => __( 'Sidebar open by default', 'fortunato' ),
+        'section'    => 'cresta_fortunato_options',
+        'settings'   => 'fortunato_theme_options_sidebaropen',
+        'type'       => 'checkbox',
+    ) );
+	
+	/*
 	Upgrade to PRO
 	=====================================================
 	*/
@@ -250,15 +336,15 @@ function fortunato_color_primary_register( $wp_customize ) {
         public function render_content() {  ?>
         	<p class="fortunato-upgrade-title">
         		<span class="customize-control-title">
-					<h3 style="text-align:center;"><div class="dashicons dashicons-megaphone"></div> <?php _e('Get Fortunato PRO WP Theme for only', 'fortunato'); ?> 29,90&euro;</h3>
+					<h3 style="text-align:center;"><div class="dashicons dashicons-megaphone"></div> <?php esc_html_e('Get Fortunato PRO WP Theme for only', 'fortunato'); ?> 29,90&euro;</h3>
         		</span>
         	</p>
 			<p style="text-align:center;" class="fortunato-upgrade-button">
 				<a style="margin: 10px;" target="_blank" href="http://crestaproject.com/demo/fortunato-pro/" class="button button-secondary">
-					<?php _e('Watch the demo', 'fortunato'); ?>
+					<?php esc_html_e('Watch the demo', 'fortunato'); ?>
 				</a>
-				<a style="margin: 10px;" target="_blank" href="http://crestaproject.com/downloads/fortunato/" class="button button-secondary">
-					<?php _e('Get Fortunato PRO Theme', 'fortunato'); ?>
+				<a style="margin: 10px;" target="_blank" href="https://crestaproject.com/downloads/fortunato/" class="button button-secondary">
+					<?php esc_html_e('Get Fortunato PRO Theme', 'fortunato'); ?>
 				</a>
 			</p>
 			<ul>
@@ -284,7 +370,7 @@ function fortunato_color_primary_register( $wp_customize ) {
     }
 	
 	$wp_customize->add_section( 'cresta_upgrade_pro', array(
-	     'title'    => __( 'More features? Upgrade to PRO', 'fortunato' ),
+	     'title'    => esc_html__( 'More features? Upgrade to PRO', 'fortunato' ),
 	     'priority' => 999,
 	));
 	
@@ -309,7 +395,6 @@ function fortunato_sanitize_checkbox( $input ) {
 		return '';
 	}
 }
-
 
 /**
  * Add Custom CSS to Header 
@@ -353,7 +438,7 @@ function fortunato_custom_css_styles() {
 			input[type="color"],
 			textarea,
 			select {
-				background: <?php echo esc_attr($fortunato_box_background_color); ?>;
+				background: <?php echo esc_html($fortunato_box_background_color); ?>;
 			}
 			button,
 			input[type="button"],
@@ -377,7 +462,7 @@ function fortunato_custom_css_styles() {
 			.widget_shopping_cart p.buttons a,
 			.woocommerce .wishlist_table td.product-add-to-cart a,
 			.woocommerce .content-area .woocommerce-tabs .tabs li.active a {
-				color: <?php echo esc_attr($fortunato_box_background_color); ?>;
+				color: <?php echo esc_html($fortunato_box_background_color); ?>;
 			}
 			.cat-links a,
 			.tagcloud a,
@@ -385,19 +470,19 @@ function fortunato_custom_css_styles() {
 			.site-main .pagination .nav-links a,
 			.page-links > a,
 			.woocommerce-pagination .page-numbers a {
-				color: <?php echo esc_attr($fortunato_box_background_color); ?> !important;
+				color: <?php echo esc_html($fortunato_box_background_color); ?> !important;
 			}
 			#search-full {
-				background: rgba(<?php echo esc_attr($r).', '.esc_attr($g).', '.esc_attr($b); ?>, 0.9);
+				background: rgba(<?php echo esc_html($r).', '.esc_html($g).', '.esc_html($b); ?>, 0.9);
 			}
 			@media screen and (max-width: 768px) {
 				.menu-toggle,
 				.main-navigation.toggled .nav-menu,
 				.menu-toggle:hover, .menu-toggle:focus {
-					background: <?php echo esc_attr($fortunato_box_background_color); ?>;
+					background: <?php echo esc_html($fortunato_box_background_color); ?>;
 				}
 				.main-navigation.toggled .menu-toggle {
-					color: <?php echo esc_attr($fortunato_box_background_color); ?>;
+					color: <?php echo esc_html($fortunato_box_background_color); ?>;
 				}
 			}
 		<?php endif; ?>
@@ -430,7 +515,7 @@ function fortunato_custom_css_styles() {
 			.woocommerce .wooImage .added_to_cart:hover,
 			.woocommerce-error li a, .woocommerce-message a:hover,
 			.return-to-shop a, .wc-proceed-to-checkout .button.checkout-button:hover {
-				color: <?php echo esc_attr($fortunato_box_text_color); ?>;
+				color: <?php echo esc_html($fortunato_box_text_color); ?>;
 			}
 			.cat-links a:hover,
 			.cat-links a:focus,
@@ -445,22 +530,22 @@ function fortunato_custom_css_styles() {
 			.woocommerce ul.products > li .price,
 			.woocommerce-pagination .page-numbers a:hover,
 			.woocommerce-pagination .page-numbers a:focus {
-				color: <?php echo esc_attr($fortunato_box_text_color); ?> !important;
+				color: <?php echo esc_html($fortunato_box_text_color); ?> !important;
 			}
 			.main-navigation ul ul,
 			.openSidebar.sidebarColor span {
-				background: <?php echo esc_attr($fortunato_box_text_color); ?>;
+				background: <?php echo esc_html($fortunato_box_text_color); ?>;
 			}
 			.site-brand-main {
-				background-color: rgba(<?php echo esc_attr($r).', '.esc_attr($g).', '.esc_attr($b); ?>, 0.4);
+				background-color: rgba(<?php echo esc_html($r).', '.esc_html($g).', '.esc_html($b); ?>, 0.4);
 			}
 			@media screen and (max-width: 768px) {
 				.menu-toggle,
 				.menu-toggle:hover, .menu-toggle:focus {
-					color: <?php echo esc_attr($fortunato_box_text_color); ?>;
+					color: <?php echo esc_html($fortunato_box_text_color); ?>;
 				}
 				.main-navigation a {
-					color: <?php echo esc_attr($fortunato_box_text_color); ?> !important;
+					color: <?php echo esc_html($fortunato_box_text_color); ?> !important;
 				}
 			}
 		<?php endif; ?>
@@ -484,16 +569,16 @@ function fortunato_custom_css_styles() {
 			input[type="color"],
 			textarea,
 			.woocommerce .wooImage:hover {
-				border: 1px solid <?php echo esc_attr($fortunato_box_second_text_color); ?>;
+				border: 1px solid <?php echo esc_html($fortunato_box_second_text_color); ?>;
 			}
 			.sepHentry:before, .sepHentry:after {
-				border-bottom: 1px solid <?php echo esc_attr($fortunato_box_second_text_color); ?>;
+				border-bottom: 1px solid <?php echo esc_html($fortunato_box_second_text_color); ?>;
 			}
 			.sepHentry2 {
-				border-top: 1px solid <?php echo esc_attr($fortunato_box_second_text_color); ?>;
+				border-top: 1px solid <?php echo esc_html($fortunato_box_second_text_color); ?>;
 			}
 			.widget-area {
-				border-right: 1px solid <?php echo esc_attr($fortunato_box_second_text_color); ?>;
+				border-right: 1px solid <?php echo esc_html($fortunato_box_second_text_color); ?>;
 			}
 			.smallPart,
 			input[type="text"],
@@ -518,7 +603,7 @@ function fortunato_custom_css_styles() {
 			.smallPart a:focus,
 			.smallPart a:active,
 			.sepHentry {
-				color: <?php echo esc_attr($fortunato_box_second_text_color); ?>;
+				color: <?php echo esc_html($fortunato_box_second_text_color); ?>;
 			}
 			button:hover,
 			input[type="button"]:hover,
@@ -547,7 +632,7 @@ function fortunato_custom_css_styles() {
 			.woocommerce .wooImage .added_to_cart:hover,
 			.woocommerce-error li a, .woocommerce-message a:hover,
 			.return-to-shop a, .wc-proceed-to-checkout .button.checkout-button:hover {
-				background: <?php echo esc_attr($fortunato_box_second_text_color); ?>;
+				background: <?php echo esc_html($fortunato_box_second_text_color); ?>;
 			}
 		<?php endif; ?>
 		
@@ -559,7 +644,7 @@ function fortunato_custom_css_styles() {
 			.comment-reply-title,
 			.woocommerce ul.products > li .price,
 			.woocommerce div.product .summary .price {
-				color: <?php echo esc_attr($fortunato_special_color); ?>;
+				color: <?php echo esc_html($fortunato_special_color); ?>;
 			}
 			button,
 			input[type="button"],
@@ -581,11 +666,11 @@ function fortunato_custom_css_styles() {
 			.woocommerce .wishlist_table td.product-add-to-cart a,
 			.woocommerce .content-area .woocommerce-tabs .tabs li.active a,
 			.widget_price_filter .ui-slider .ui-slider-handle {
-				background: <?php echo esc_attr($fortunato_special_color); ?>;
+				background: <?php echo esc_html($fortunato_special_color); ?>;
 			}
 			blockquote {
-				border-left: 3px solid <?php echo esc_attr($fortunato_special_color); ?>;
-				border-right: 1px solid <?php echo esc_attr($fortunato_special_color); ?>;
+				border-left: 3px solid <?php echo esc_html($fortunato_special_color); ?>;
+				border-right: 1px solid <?php echo esc_html($fortunato_special_color); ?>;
 			}
 			input[type="text"]:focus,
 			input[type="email"]:focus,
@@ -604,7 +689,7 @@ function fortunato_custom_css_styles() {
 			input[type="color"]:focus,
 			textarea:focus,
 			#wp-calendar tbody td#today {
-				border: 1px solid <?php echo esc_attr($fortunato_special_color); ?>;
+				border: 1px solid <?php echo esc_html($fortunato_special_color); ?>;
 			}
 			.main-navigation ul li:hover > a, 
 			.main-navigation ul li.focus > a, 
@@ -613,14 +698,14 @@ function fortunato_custom_css_styles() {
 			.main-navigation li.current-page-ancestor > a,
 			.main-navigation .current_page_item > a, 
 			.main-navigation .current_page_parent > a {
-				border-top: 2px solid <?php echo esc_attr($fortunato_special_color); ?>;
+				border-top: 2px solid <?php echo esc_html($fortunato_special_color); ?>;
 			}
-			.woocommerce ul.products > li h3:after {
-				 border-bottom: 2px solid <?php echo esc_attr($fortunato_special_color); ?>;
+			.woocommerce ul.products > li h2:after {
+				border-bottom: 2px solid <?php echo esc_html($fortunato_special_color); ?>;
 			}
 			@media screen and (max-width: 768px) {
 				.main-navigation.toggled .menu-toggle {
-					background: <?php echo esc_attr($fortunato_special_color); ?>;
+					background: <?php echo esc_html($fortunato_special_color); ?>;
 				}
 			}
 		<?php endif; ?>

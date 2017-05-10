@@ -67,14 +67,14 @@ function pixgraphy_title($title) {
 			endif;
 		elseif ( is_author() ) :
 			the_post();
-			$title =  sprintf( __( 'Author: %s', 'pixgraphy' ), '<span class="vcard">' . get_the_author() . '</span>' );
+			$title =  sprintf( __( 'Author: %s', 'pixgraphy' ), get_the_author() );
 			rewind_posts();
 		elseif ( is_day() ) :
-			$title = sprintf( __( 'Day: %s', 'pixgraphy' ), '<span>' . get_the_date() . '</span>' );
+			$title = sprintf( __( 'Day: %s', 'pixgraphy' ), get_the_date() );
 		elseif ( is_month() ) :
-			$title = sprintf( __( 'Month: %s', 'pixgraphy' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
+			$title = sprintf( __( 'Month: %s', 'pixgraphy' ), get_the_date( 'F Y' ) );
 		elseif ( is_year() ) :
-			$title = sprintf( __( 'Year: %s', 'pixgraphy' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
+			$title = sprintf( __( 'Year: %s', 'pixgraphy' ), get_the_date( 'Y' ) );
 		elseif ( $format == 'audio' ) :
 			$title = __( 'Audios', 'pixgraphy' );
 		elseif ( $format =='aside' ) :
@@ -119,7 +119,7 @@ function pixgraphy_custom_header_setup() {
 	$args = array(
 		'default-text-color'     => '',
 		'default-image'          => '',
-		'height'                 => apply_filters( 'pixgraphy_header_image_height', 400 ),
+		'height'                 => apply_filters( 'pixgraphy_header_image_height', 450 ),
 		'width'                  => apply_filters( 'pixgraphy_header_image_width', 2500 ),
 		'random-default'         => false,
 		'max-width'              => 2500,
@@ -135,4 +135,27 @@ function pixgraphy_custom_header_setup() {
 	add_theme_support( 'custom-header', $args );
 }
 add_action( 'after_setup_theme', 'pixgraphy_custom_header_setup' );
-?>
+
+/********************* Remove Parallax Effect on Header Image ***********************************/
+function pixgraphy_remove_parallax_css() {
+	$pixgraphy_settings = pixgraphy_get_theme_options();
+	if ($pixgraphy_settings['pixgraphy_remove_parallax_fromheader'] !=0){
+		$pixgraphy_parallax_css .= '<!-- Remove Parallax Effect on Header Image -->'."\n";
+			$pixgraphy_parallax_css .= '<style type="text/css" media="screen">'."\n";
+			$pixgraphy_parallax_css .= 
+			/*Remove Parallax Effect on Header Image - Use 1920x350px dimension image*/
+			'.top-header {
+				background-attachment: inherit;
+				min-height: 250px;
+			}
+
+			@media only screen and (max-width: 1023px) { 
+				.top-header {
+					min-height: auto;
+				}
+			}';
+			$pixgraphy_parallax_css .= '</style>'."\n";
+			echo $pixgraphy_parallax_css;
+	}
+}
+add_filter( 'wp_head', 'pixgraphy_remove_parallax_css');

@@ -1,8 +1,7 @@
 === Satori ===
 Contributors: Kaira
 Tags: one-column, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-menu, editor-style, featured-image-header, featured-images, footer-widgets, full-width-template, theme-options, threaded-comments, translation-ready, e-commerce, entertainment, food-and-drink
-Requires at least: 4.0
-Tested up to: 4.6.1
+Requires at least: 4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +64,21 @@ View the theme settings under "Appearance" -> Customize.
 1. Featured Images work best at a minimum of 1100 wide and 420 high.
 
 == Changelog ==
+
+#### 1.1.00
+* Neatened up the Customizer settings
+* Updated the language .pot file
+Premium: Added color settings for header and other layout sections
+Premium: Added new social networks
+Premium: Added setting to add blog list summaries & adjust the length
+
+#### 1.0.9
+* Styling fixes/tweaks
+* Customizer javascript fix
+* Updated Font Awesome - version 4.7.0
+* Updated the language .pot file
+Premium: Now has over 20 different social links
+Premium: Added settings to change the footer colors
 
 #### 1.0.8
 * WooCommerce style fix

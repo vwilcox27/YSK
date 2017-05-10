@@ -98,9 +98,20 @@ $pixgraphy_settings = pixgraphy_get_theme_options(); ?>
 <!-- Main Page Start ============================================= -->
 <div id="content">
 <?php if($pixgraphy_settings['pixgraphy_photography_layout'] == 'photography_layout' && !is_page() && !is_single()){
-	if(class_exists('WooCommerce') && is_shop() || is_404()  || is_search() || is_archive()): ?>
+	if( is_404()  || is_search() || is_archive()):
+		if($pixgraphy_settings['pixgraphy_photography_layout'] == 'photography_layout'){
+			if(class_exists('WooCommerce') && (is_shop() || is_product_category())){ ?>
+			<div class="container clearfix">
+			<?php }else{
+				if(is_404()){ ?>
+				<div class="container clearfix">
+				<?php }
+				// silence is golden
+			}
+		}else{ ?>
 	 	<div class="container clearfix">
-	<?php else: ?> 		
+		<?php }
+	else: ?> 		
 	<div id="main">
 	<?php endif;
 }else{ ?>
@@ -109,7 +120,7 @@ $pixgraphy_settings = pixgraphy_get_theme_options(); ?>
 if(is_home() ){
 // silence is golden;
 }else{
-	if(is_category() || is_tag() || is_author()){
+	if(is_category() || is_tag() || is_author()|| has_post_format() || is_archive()){
 		if($pixgraphy_settings['pixgraphy_photography_layout'] == 'photography_layout'){
 			//silence is golder?>
 		<?php }
@@ -123,4 +134,4 @@ if(is_home() ){
 	</div>
 	<!-- .page-header -->
 	<?php }
-} ?>
+}

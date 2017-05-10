@@ -47,4 +47,3 @@ function pixgraphy_customize_register_widgets( $wp_customize ) {
 		'description' => '',
 	) );
 }
-?>

@@ -1,10 +1,10 @@
 /*
 Theme Name: Fortunato
-Theme URI: http://crestaproject.com/downloads/fortunato/
+Theme URI: https://crestaproject.com/downloads/fortunato/
 Author: Rizzo Andrea - CrestaProject.com
-Author URI: http://crestaproject.com
+Author URI: https://crestaproject.com
 Description: Fortunato is modern & minimal responsive WordPress Blog Theme and E-Commerce, a large column in the center of the screen, and the sidebar that appears when you click on the appropriate button, unlimited colors and theme options. Fortunato theme features WooCommerce integration that allows you to create an eCommerce for your products. Demo here http://crestaproject.com/demo/fortunato/
-Version: 1.3.8
+Version: 1.5.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: fortunato
@@ -1050,7 +1050,11 @@ a:active {
 form.woocommerce-checkout:before,
 form.woocommerce-checkout:after,
 .product_list_widget li:before,
-.product_list_widget li:after {
+.product_list_widget li:after,
+.widget.widget_search:before,
+.widget.widget_search:after,
+.widget.woocommerce.widget_product_search:before,
+.widget.woocommerce.widget_product_search:after {
 	content: "";
 	display: table;
 }
@@ -1071,7 +1075,9 @@ form.woocommerce-checkout:after,
 .woocommerce-product-rating:after,
 .cart-collaterals:after,
 form.woocommerce-checkout:after,
-.product_list_widget li:after {
+.product_list_widget li:after,
+.widget.widget_search:after,
+.widget.woocommerce.widget_product_search:after {
 	clear: both;
 }
 
@@ -1085,11 +1091,6 @@ form.woocommerce-checkout:after,
 /* Make sure select elements fit in widgets. */
 .widget select {
 	max-width: 100%;
-}
-
-/* Search widget. */
-.widget_search .search-submit {
-	display: none;
 }
 
 /* Calendar Widget */
@@ -1134,6 +1135,18 @@ form.woocommerce-checkout:after,
 	text-align: right;
 }
 .widget_archive li a, .widget_categories li a {
+	float: left;
+}
+.widget.widget_categories li:before {
+	font-family: FontAwesome;
+	content: "\f114";
+	padding-right: 0.5em;
+	float: left;
+}
+.widget.widget_archive li:before {
+	font-family: FontAwesome;
+	content: "\f0da";
+	padding-right: 0.5em;
 	float: left;
 }
 
@@ -1219,6 +1232,28 @@ aside ul.menu .indicatorBar:before {
 
 aside ul.menu .indicatorBar.yesOpenBar:before {
 	content: "\f106";
+}
+/* Search widget */
+.widget.widget_search input[type="search"],
+.widget.woocommerce.widget_product_search input[type="search"] {
+	width: 68%;
+    display: inline-block;
+    -webkit-appearance: none;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    padding: 4px 15px;
+    line-height: 1;
+	float: left;
+	height: 36px;
+}
+.widget.widget_search input[type="submit"],
+.widget.woocommerce.widget_product_search input[type="submit"] {
+	width: 32%;
+    display: inline-block;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+	float: right;
+	height: 36px;
 }
 
 /*--------------------------------------------------------------
@@ -1439,23 +1474,29 @@ header.entry-header h2.noMarginTop {
   transition-delay: .25s;
 }
 
-.openSidebar.yesOpen #hamburger span {
+.openSidebar.yesOpen #hamburger span,
+body.sidebar-open-default #hamburger span {
   width: 0%;
 }
-.openSidebar.yesOpen #hamburger span:nth-child(1) {
+.openSidebar.yesOpen #hamburger span:nth-child(1),
+body.sidebar-open-default #hamburger span:nth-child(1) {
   transition-delay: 0s;
 }
-.openSidebar.yesOpen #hamburger span:nth-child(2) {
+.openSidebar.yesOpen #hamburger span:nth-child(2),
+body.sidebar-open-default #hamburger span:nth-child(2) {
   transition-delay: .125s;
 }
-.openSidebar.yesOpen #hamburger span:nth-child(3) {
+.openSidebar.yesOpen #hamburger span:nth-child(3),
+body.sidebar-open-default #hamburger span:nth-child(3) {
   transition-delay: .25s;
 }
-.openSidebar.yesOpen #cross span:nth-child(1) {
+.openSidebar.yesOpen #cross span:nth-child(1),
+body.sidebar-open-default #cross span:nth-child(1) {
   height: 100%;
   transition-delay: .625s;
 }
-.openSidebar.yesOpen #cross span:nth-child(2) {
+.openSidebar.yesOpen #cross span:nth-child(2),
+body.sidebar-open-default #cross span:nth-child(2) {
   width: 100%;
   transition-delay: .375s;
 }
@@ -1473,10 +1514,12 @@ header.entry-header h2.noMarginTop {
 body.admin-bar .openSidebar, body.admin-bar .openSearch {
 	top: 52px;
 }
-.openSidebar.yesOpen {
+.openSidebar.yesOpen,
+body.sidebar-open-default .openSidebar {
 	left: 360px;
 }
-.openSearch.yesOpen {
+.openSearch.yesOpen,
+body.sidebar-open-default .openSearch {
 	right: -360px;
 }
 
@@ -1518,7 +1561,8 @@ body.admin-bar .openSidebar, body.admin-bar .openSearch {
 	transition: left .3s ease-in-out;
 }
 .admin-bar .widget-area {top: 32px;}
-.widget-area.yesOpen {
+.widget-area.yesOpen,
+body.sidebar-open-default .widget-area {
 	left: 0;
 }
 #page.site {
@@ -1529,7 +1573,8 @@ body.admin-bar .openSidebar, body.admin-bar .openSearch {
 	-webkit-transition: left .2s ease-in-out;
 	transition: left .2s ease-in-out;
 }
-#page.site.yesOpen {
+#page.site.yesOpen,
+body.sidebar-open-default #page.site {
 	left: 330px;
 	-o-transition: left .4s ease-in-out;
 	-moz-transition: left .4s ease-in-out;
@@ -1561,6 +1606,9 @@ header.page-header {
 }
 .site-social-footer {
 	float: right;
+}
+.site-info a {
+	border-bottom: 1px dotted;
 }
 /*--------------------------------------------------------------
 10.1 Posts and pages
@@ -1880,13 +1928,14 @@ object {
 	clear: both;
 }
 
-.woocommerce ul.products > li h3 {
+.woocommerce ul.products > li h2 {
 	margin: 1em 0 0.5em;
 	font-weight: 400;
 	position: relative;
 	padding-bottom: 0.5em;
+	font-size: 1.17em;
 }
-.woocommerce ul.products > li h3:after {
+.woocommerce ul.products > li h2:after {
 	content: "";
     position: absolute;
     width: 10%;
@@ -1900,7 +1949,7 @@ object {
     -webkit-transition: width .3s ease-in-out;
     transition: width .3s ease-in-out;
 }
-.woocommerce .wooImage:hover h3:after {
+.woocommerce .wooImage:hover h2:after {
 	width: 20%;
 }
 
@@ -1912,10 +1961,6 @@ object {
 	width: 53%;
     float: left;
 	margin: 0 0 1.5em;
-}
-.woocommerce .content-area .images img {
-	display: block;
-	width: 100%;
 }
 .woocommerce .content-area .summary {
 	width: 43%;
@@ -1990,16 +2035,39 @@ object {
 	width: 100%;
 }
 
+/* WooCommerce 3.0.0 version */
+.woocommerce .content-area .images figure {
+	margin: 0 0 1em;
+}
+.woocommerce .content-area .images figure div a img {
+	display: block;
+	width: 100%;
+}
+.woocommerce .content-area .images figure div:first-child a {
+	display: block;
+	width: 100%;
+	background: inherit;
+	padding: 0;
+	margin-bottom: 1em;
+}
 .woocommerce .content-area .images .thumbnails a {
 	display: inline-block;
 	width: 33.3333%;
 	padding: 0.3em;
 }
-
-.woocommerce .content-area .images .thumbnails img {
+.woocommerce .content-area .images figure div {
+	display: inline;
+}
+.woocommerce .content-area .images figure div a {
+	display: inline-block;
+	width: 33.3333%;
+	padding: 0.3em;
+}
+.woocommerce .content-area .images figure div a {
 	background: rgba(0,0,0,0.03);
     padding: 0.3em;
 }
+/* WooCommerce 3.0.0 version */
 
 .woocommerce .related h2 {
 	text-align: center;
@@ -2844,6 +2912,9 @@ table.cart td.actions label {
 		float: none;
 		width: 100%;
 		text-align: center;
+	}
+	#page.site.yesOpen, body.sidebar-open-default #page.site {
+		left: 0;
 	}
 }
 @media all and (max-width: 960px) {

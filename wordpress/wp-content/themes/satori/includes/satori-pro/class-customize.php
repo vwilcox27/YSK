@@ -74,7 +74,7 @@ final class Satori_Premium_Customize {
 				'satori_premium',
 				array(
 					'title'    => esc_html__( 'Satori Premium', 'satori' ),
-					'pro_text' => esc_html__( 'Get Satori Premium',         'satori' ),
+					'pro_text' => esc_html__( 'Upgrade to Premium',         'satori' ),
 					'pro_url'  => 'https://kairaweb.com/theme/satori/#purchase-premium'
 				)
 			)

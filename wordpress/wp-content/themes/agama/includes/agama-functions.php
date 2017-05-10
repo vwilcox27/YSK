@@ -337,58 +337,79 @@ function agama_article_wrapper_class() {
 }
 
 /**
- * Render HTML for blog post date / post format
+ * Render Blog Post Date & Icon
  *
- * @since Agama v1.0.1
+ * @since 1.0.1
  */
 if( ! function_exists( 'agama_render_blog_post_date' ) ) {
 	function agama_render_blog_post_date() {
 		global $post;
 		
-		// If not single post
-		if( !is_single() ) {
+		// Display blog post date only on posts loop page.
+		if( ! is_single() && get_theme_mod( 'agama_blog_post_date', true ) ) {
 			echo '<div class="entry-date">';
-			echo '<div class="date-box updated">';
-			echo sprintf( '<span class="date">%s</span>', get_the_time('d') ); // Get day
-			echo sprintf( '<span class="month-year">%s</span>', get_the_time('m, Y') ); // Get month, year
+				echo '<div class="date-box updated">';
+					printf( '<span class="date">%s</span>', get_the_time('d') ); // Get day
+					printf( '<span class="month-year">%s</span>', get_the_time('m, Y') ); // Get month, year
+				echo '</div>';
+				echo '<div class="format-box">';
+					printf( '%s', Agama::post_format() );
+				echo '</div>';
 			echo '</div>';
-			echo '<div class="format-box">';
-			echo sprintf( '%s', Agama::post_format() );
-			echo '</div>';
-			echo '</div><!-- .entry-date -->';
 		}
 	}
 }
 add_action( 'agama_blog_post_date_and_format', 'agama_render_blog_post_date', 10 );
 
 /**
- * Render HTML blog post meta details
+ * Render Blog Post Meta
  *
- * @since Agama v1.0.1
+ * @since 1.0.1
  */
 if( ! function_exists( 'agama_render_blog_post_meta' ) ) {
 	function agama_render_blog_post_meta() {
 		
+		// Display blog post author.
 		if( get_theme_mod( 'agama_blog_post_author', true ) ) {
-			echo sprintf( 
+			printf( 
 				'%s <span class="vcard"><span class="fn">%s</span></span>', 
-				'<i class="fa fa-user"></i>', get_the_author_link() 
+				'<i class="fa fa-user"></i>', 
+				get_the_author_link() 
 			);
-			
-			echo sprintf( '<span class="inline-sep">%s</span>', '/' );
 		}
 		
-		echo sprintf( '%s <span>%s</span>', '<i class="fa fa-calendar"></i>', get_the_time('F j, Y') );
+		// Display blog post publish date.
+		if( get_theme_mod( 'agama_blog_post_date', true ) ) {
+			printf( 
+				'%s %s <span>%s</span>',
+				'<span class="inline-sep">/</span>',				
+				'<i class="fa fa-calendar"></i>', 
+				get_the_time('F j, Y') 
+			);
+		}
 		
-		// Output next details only on list blog layout or on single post page
+		// Display next details only on list blog layout or on single post page.
 		if( get_theme_mod('agama_blog_layout', 'list') == 'list' || is_single() ) {
-			echo '<span class="inline-sep">/</span>';
-			echo sprintf( '%s %s', '<i class="fa fa-folder-open"></i>', get_the_category_list(', ') );
-			echo '<span class="inline-sep">/</span>';
 			
-			// Comments number
-			if( comments_open() ) {
-				echo sprintf( '%s <a href="%s">%s</a>', '<i class="fa fa-comments"></i>', get_comments_link(), get_comments_number().__( ' comments', 'agama' ) );
+			// Display post category.
+			if( get_theme_mod( 'agama_blog_post_category', true ) ) {
+				printf( 
+					'%s %s %s', 
+					'<span class="inline-sep">/</span>',
+					'<i class="fa fa-folder-open"></i>', 
+					get_the_category_list(', ') 
+				);
+			}
+			
+			// Display post comment counter.
+			if( comments_open() && get_theme_mod( 'agama_blog_post_comments', true ) ) {
+				printf( 
+					'%s %s <a href="%s">%s</a>', 
+					'<span class="inline-sep">/</span>',
+					'<i class="fa fa-comments"></i>', 
+					get_comments_link(), 
+					get_comments_number().__( ' comments', 'agama' ) 
+				);
 			}
 		}
 	}

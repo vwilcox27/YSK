@@ -52,7 +52,7 @@ get_header('shop');
 
                 <div id="primary" class="content-area clearfix">
                     <div class="content-inner">
-                        <div class="col-sm-<?php echo (!is_active_sidebar('sidebar-right') ) ? '12' : '9'; ?>">
+                        <div class="col-sm-<?php echo (!is_active_sidebar('sidebar-shop') ) ? '12' : '9'; ?>">
                         <?php if (have_posts()) : ?>
 
                             <?php

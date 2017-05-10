@@ -4,14 +4,14 @@ Theme URI: https://smartcatdesign.net/articles/athena-responsive-multipurpose-wo
 Author: Smartcat
 Author URI: https://smartcatdesign.net
 Description: Build your site Athena with ease. Athena is a feature-loaded, user-friendly, fully responsive, Parallax modern WordPress theme built with care and SEO in mind. It is a Woocommerce ready, multi-purpose theme with a design that can be used by a business, restaurant, freelancers, photographers, bloggers, musicians and creative agencies. Athena features a full width frontpage slider, animated callouts with over 600 icons to choose from. The blog is an attractive masonry grid. It comes with many color options, left and right sidebars, 6 widget areas, primary and footer menus, mobile responsive menu and links to your social media sites . Athena allows you to fully customize your site without having to work with code. Athena also features a live customizer, allowing you to change settings and preview them live. 
-Version: 1.0.8
+Version: 1.1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: athena
-Tags: black, blue, green, pink, red, yellow, dark, light, full-width-template, threaded-comments, responsive-layout, left-sidebar, featured-images, right-sidebar, one-column, two-columns, three-columns, custom-colors, theme-options, translation-ready, photoblogging
+Tags: one-column,two-columns,three-columns,left-sidebar,right-sidebar,grid-layout,custom-colors,custom-logo,featured-images,footer-widgets,full-width-template,theme-options,translation-ready,portfolio,e-commerce,entertainment,photography
 
 
-Athena WordPress Theme, Copyright (C) 2016, Smartcat
+Athena WordPress Theme, Copyright (C) 2017, Smartcat
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -94,8 +94,7 @@ template {
 }
 
 a {
-	background-color: #000000
-;
+	background-color: transparent;
 }
 
 a:active,
@@ -118,13 +117,6 @@ dfn {
 
 h1 {
 	font-size: 2em;
-
-	color: #e60000;
-	font-family: 'Fredericka the Great', cursive;
-	/*font-size: 26;
-	font-style: */
-
-	
 	margin: 0.67em 0;
 }
 
@@ -289,16 +281,9 @@ textarea {
 	line-height: 1.5;
 }
 
-h1
-{
-	color: #e60000;
-	font-family: 'Fredericka the Great', cursive;
-	font-size: 26;
-	font-style: 
-
-	},
+h1,
 h2,
-h3 
+h3,
 h4,
 h5,
 h6 {

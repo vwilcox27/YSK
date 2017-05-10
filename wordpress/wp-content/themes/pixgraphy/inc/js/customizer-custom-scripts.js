@@ -1,1 +1,15 @@
-!function(e){e(".preview-notice").prepend('<span id="pixgraphy_upgrade"><a target="_blank" class="button btn-upgrade" href="'+pixgraphy_upgrade_links.upgrade_link+'">'+pixgraphy_upgrade_links.upgrade_text+"</a></span>"),jQuery("#customize-info .btn-upgrade, .misc_links").click(function(e){e.stopPropagation()})}(jQuery);
+( function( api ) {
+
+	// Extends our custom "pixgraphy" section.
+	api.sectionConstructor['pixgraphy'] = api.Section.extend( {
+
+		// No events for this type of section.
+		attachEvents: function () {},
+
+		// Always make the section active.
+		isContextuallyActive: function () {
+			return true;
+		}
+	} );
+
+} )( wp.customize );

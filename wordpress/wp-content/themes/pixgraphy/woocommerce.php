@@ -43,4 +43,4 @@ if( 'default' == $layout ) { //Settings from customizer
 </div> <!-- #secondary -->
 <?php endif;
 	}
-get_footer(); ?>
+get_footer();
